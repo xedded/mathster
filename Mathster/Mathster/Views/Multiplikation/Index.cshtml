@@ -3,6 +3,22 @@
     <h1>hola</h1>
 
 <div> @Model.CorrectAnswer
-
-    
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div> @Model.MultipliedFactors.GetValue(0) X @Model.MultipliedFactors.GetValue(1)</div>
+ @foreach (var item in Model.ResultOptions)
+{
+     <div>@item</div>
+
+}
