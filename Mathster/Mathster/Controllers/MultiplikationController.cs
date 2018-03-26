@@ -10,7 +10,10 @@ namespace Mathster.Controllers
 {
     public class MultiplikationController : Controller
     {
+
         // GET: /<controller>/
+        [Route("Multiplikation")]
+
         public IActionResult Index()
         {
             return View();
