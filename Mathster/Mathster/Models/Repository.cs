@@ -14,13 +14,13 @@ namespace Mathster.Models
             int tal1 = rdm.Next(0, 11);
             int tal2 = rdm.Next(0, 11);
 
-           
 
-            return 
+
+            return
         }
 
 
-       
-        
+
+
     }
 }
