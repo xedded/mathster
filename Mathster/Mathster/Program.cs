@@ -15,6 +15,7 @@ namespace Mathster
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
+            Console.WriteLine("Hejsan");
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
