@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mathster.Models;
+using Mathster.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,12 +13,19 @@ namespace Mathster.Controllers
     public class MultiplikationController : Controller
     {
 
-        // GET: /<controller>/
-        [Route("Multiplikation")]
-
-        public IActionResult Index()
+        //MultiplikationIndexVM multiplikationIndexVM = new MultiplikationIndexVM();
+        private readonly Repository repository;
+        public MultiplikationController(Repository repository)
         {
-            return View();
+            this.repository = repository;
+        }
+
+        [Route("Multiplikation")]
+         public IActionResult Index()
+        {
+            var model = repository.MultiplicationRandomizer();
+
+            return View(model);
         }
     }
 }
