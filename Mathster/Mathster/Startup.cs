@@ -27,7 +27,7 @@ namespace Mathster
             {
                 app.UseDeveloperExceptionPage();  //hej
             }
-
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
