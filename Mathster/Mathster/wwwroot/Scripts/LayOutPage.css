@@ -2,6 +2,8 @@
     background-image: url("/MathsterBackground.png");
     background-size: cover;
     margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS';
 }
 
 ul {
@@ -9,30 +11,22 @@ ul {
     margin: 0;
     padding: 0;
     width: 18%;
-    background-color: #60b394;
-    height: 100%; 
-    position: fixed; 
-    overflow: auto; 
+    background-color: #47826d;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+
 }
 li a {
     display: block;
-    color: #000;
-    padding: 8px 16px;
+    color: white;
+    padding: 20px 20px;
     text-decoration: none;
+    font-size:30px;
 }
 
-    li a.active {
-        background-color: #4CAF50;
-        color: white;
-    }
 
     li a:hover:not(.active) {
-        background-color: #555;
+        background-color: #60b394;
         color: white;
-    }
-    .container
-    {
-        display: flex;
-        flex-direction:row;
-        align-content:flex-end;
     }
