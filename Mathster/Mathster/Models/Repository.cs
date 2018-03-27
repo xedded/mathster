@@ -15,15 +15,15 @@ namespace Mathster.Models
             int number2 = rdm.Next(0, 11);
 
             int product = number1 * number2;
-            int[] arrayProduct = new int[2] { number1, number2};
+            int[] arrayProduct = new int[2] { number1, number2 };
 
-            int rangeMin = product - 5; 
-            if (rangeMin<0)
+            int rangeMin = product - 5;
+            if (rangeMin < 0)
             {
                 rangeMin = 0;
             }
             int rangeMax = product + 5;
-            
+
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             while (fakeNumber1 == product)
@@ -31,12 +31,12 @@ namespace Mathster.Models
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber2== fakeNumber1 || fakeNumber2==product)
+            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product)
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber3 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber3 == fakeNumber2 || fakeNumber3== fakeNumber1 || fakeNumber3==product)
+            while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == product)
             {
                 fakeNumber3 = rdm.Next(rangeMin, rangeMax);
             }
@@ -57,6 +57,116 @@ namespace Mathster.Models
 
             };
             return multiplikationIndexVM;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
+            public DivisionIndexVM DivisionRandomizer()
+            {
+                Random rdm = new Random();
+                int number1 = rdm.Next(3, 11); 
+                int number2 = rdm.Next(0, 11);
+
+                int product = number1 * number2;
+                int[] arrayProduct = new int[2] { product, number1 };
+
+                int rangeMin = number2 - 3;
+                if (rangeMin < 0)
+                {
+                    rangeMin = 0;
+                }
+                int rangeMax = number2 + 3;
+
+
+                int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
+                while (fakeNumber1 == number2)
+                {
+                    fakeNumber1 = rdm.Next(rangeMin, rangeMax);
+                }
+                int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
+                while (fakeNumber2 == fakeNumber1 || fakeNumber2 == number2)
+                {
+                    fakeNumber2 = rdm.Next(rangeMin, rangeMax);
+                }
+                int fakeNumber3 = rdm.Next(rangeMin, rangeMax);
+                while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == number2)
+                {
+                    fakeNumber3 = rdm.Next(rangeMin, rangeMax);
+                }
+
+                List<int> list = new List<int> { number2, fakeNumber1, fakeNumber2, fakeNumber3 };
+
+                // Ändringar!!
+
+                List<int> sortedList = list.OrderBy(v => v).ToList();
+                int[] arrayFakeNumbers = sortedList.ToArray();
+                //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
+
+                DivisionIndexVM divisionIndexVM = new DivisionIndexVM
+                {
+                    CorrectAnswer = number2,
+                    NumeratiorDenumerator = arrayProduct,
+                    ResultOptions = arrayFakeNumbers
+
+                };
+            return divisionIndexVM;
+            }
     }
 }
