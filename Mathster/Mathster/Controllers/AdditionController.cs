@@ -15,10 +15,10 @@ namespace Mathster.Controllers
             this.repository = repository;
         }
 
-        [Route("Addition")]
-        public IActionResult Index()
+        [Route("/Addition/{id}")]
+        public IActionResult Index(int id)
         {
-            var model = repository.AdditionRandomizer();
+            var model = repository.AdditionRandomizer(id);
 
             return View(model);
         }

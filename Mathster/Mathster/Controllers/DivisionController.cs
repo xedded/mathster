@@ -17,10 +17,10 @@ namespace Mathster.Controllers
             this.repository = repository;
         }
 
-        [Route("division")]
-        public IActionResult Index()
+        [Route("/division/{id}")]
+        public IActionResult Index(int id)
         {
-            var model = repository.DivisionRandomizer();
+            var model = repository.DivisionRandomizer(id);
 
             return View(model);
         }
