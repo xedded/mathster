@@ -54,9 +54,6 @@ namespace Mathster.Models
             };
             return subtractionIndexVM;
         }
-
-
-        public MultiplikationIndexVM MultiplicationRandomizer()
         
         public MultiplikationIndexVM MultiplicationRandomizer(int id)
         {
