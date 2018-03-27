@@ -6,27 +6,4 @@
     font-family: 'Trebuchet MS';
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 18%;
-    background-color: #47826d;
-    height: 100%;
-    position: fixed;
-    overflow: auto;
 
-}
-li a {
-    display: block;
-    color: white;
-    padding: 20px 20px;
-    text-decoration: none;
-    font-size:30px;
-}
-
-
-    li a:hover:not(.active) {
-        background-color: #60b394;
-        color: white;
-    }
