@@ -1,0 +1,28 @@
+﻿@model AdditionIndexVM
+
+
+
+<div>
+    @Model.CorrectAnswer
+</div>
+
+
+<div class="emptyContainer"></div>
+<div class="container">
+    <div class="questionContainer">
+        <div class="question">@Model.AddedNumbers.GetValue(0) + @Model.AddedNumbers.GetValue(1)</div>
+    </div>
+
+    <div class="answers">
+
+        <div class="answer1 answer">@Model.ResultOptions[0]</div>
+        <div class="answer2 answer">@Model.ResultOptions[1]</div>
+        <div class="answer3 answer">@Model.ResultOptions[2]</div>
+        <div class="answer4 answer">@Model.ResultOptions[3]</div>
+
+    </div>
+</div>
+
+
+
+<link href="~/Scripts/Mathpages.css" rel="stylesheet" />
