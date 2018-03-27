@@ -31,6 +31,8 @@
 
         $(".answer").click(function () {
             getQuestion(@Model.Id);
+            var result = $(this).text();
+            console.log(result);
         });
     });
 </script>
