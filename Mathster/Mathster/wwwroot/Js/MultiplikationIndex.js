@@ -1,23 +1,36 @@
-﻿$(document).ready(function() {
-    $(".answer").click(function () {
-        var checkAnswer = $(this).attr(".answer").val();
-        
+﻿           
+$(document).ready(function () {
+    //var test = 0;
+    //doSomething(test++);
+    //function doSomething(test) {
+    //    if (test < 3) {
+            
+            $(".answer").click(function () {
 
+                var checkAnswer = $(this).text();
 
+                var correctAnswer = $(".correctAnswer").text();
 
+                if (checkAnswer == correctAnswer) {
 
-        console.log(checkAnswer);
+                    alert("rätt svar");
 
+                }
+                else {
+                    alert("fel svar");
+                }
+                
+                location.reload();
+                
+            });
 
-        //$.ajax({
-        //    url: "/home/FoodWithBeer/",
-        //    type: "GET",
-        //    data: { "id": beerId },
-        //    success: function (result) {
-        //        console.log(result);
-
-        //        $("#showBeer").html(result);
-        //    }
-        //});
-    });
+        //}
+    //    else {
+    //        alert("Spelet är slut");
+    //    }
+    //}
+    
 });
+
+
+
