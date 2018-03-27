@@ -18,10 +18,10 @@ namespace Mathster.Controllers
             this.repository = repository;
         }
 
-        [Route("Subtraktion")]
-         public IActionResult Index()
+        [Route("/Subtraktion/{id}")]
+         public IActionResult Index(int id)
         {
-            var model = repository.SubtractionRandomizer();
+            var model = repository.SubtractionRandomizer(id);
 
             return View(model);
         }

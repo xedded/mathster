@@ -8,31 +8,73 @@ namespace Mathster.Models
 {
     public class Repository
     {
-        public SubtractionIndexVM SubtractionRandomizer()
+        public SubtractionIndexVM SubtractionRandomizer(int id)
         {
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            int d = 0;
+
+            switch (id)
+            {
+                case 1:
+                    a = 5;
+                    b = 21;
+                    c = 0;
+                    d = 11;
+                    break;
+
+                case 2:
+                    a = 10;
+                    b = 85;
+                    c = 1;
+                    d = 11;
+                    break;
+
+                case 3:
+                    a = 30;
+                    b = 100;
+                    c = 10;
+                    d = 21;
+                    break;
+
+
+                default:
+                    break;
+            }
             Random rdm = new Random();
-            int number1 = rdm.Next(50, 101);  //Ändrat
-            int number2 = rdm.Next(1, 16);
+            int number1 = rdm.Next(a, b);  //Ändrat
+            int number2 = rdm.Next(c, d);
 
             int product = number1 - number2;
             int[] arrayProduct = new int[2] { number1, number2 };
 
-            int rangeMin = product - 10;
-            int rangeMax = product + 10;
+            int rangeMin = product - 5;
+            int rangeMax = product + 5;
+
+            if (number1<number2)
+            {
+                number1 += number2;
+            }
+
+            if (rangeMin < 0)
+            {
+                rangeMin = 0;
+            }
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 == product)
+            while (fakeNumber1 >= product)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product)
+            while (fakeNumber2 == fakeNumber1 || fakeNumber2 >= product)
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber3 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == product)
+            while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 >= product)
             {
                 fakeNumber3 = rdm.Next(rangeMin, rangeMax);
             }
