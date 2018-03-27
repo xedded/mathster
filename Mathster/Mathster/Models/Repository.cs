@@ -8,6 +8,14 @@ namespace Mathster.Models
 {
     public class Repository
     {
+        //List<char> countList = new List<char>();
+        //public List<char> CorrectAnswersCounted()
+        //{
+        //    char letter = ;
+        //    countList.Add(letter);
+
+        //    return countList;
+        //}
         public SubtractionIndexVM SubtractionRandomizer(int id)
         {
             int a = 0;
@@ -96,8 +104,12 @@ namespace Mathster.Models
             };
             return subtractionIndexVM;
         }
-        
-        public MultiplikationIndexVM MultiplicationRandomizer(int id)
+        public MultiplicationIndexVM GetMultiplicationIndexVM (int id)
+        {
+
+            return new MultiplicationIndexVM { Id = id };
+        }
+        public MultiplicationNewQuestionVM MultiplicationRandomizer(int id)
         {
             int a = 0;
             int b = 0;
@@ -173,9 +185,8 @@ namespace Mathster.Models
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
 
-            MultiplikationIndexVM multiplikationIndexVM = new MultiplikationIndexVM
+            MultiplicationNewQuestionVM multiplikationIndexVM = new MultiplicationNewQuestionVM
             {
-                CorrectAnswer = product,
                 MultipliedFactors = arrayProduct,
                 ResultOptions = arrayFakeNumbers
 

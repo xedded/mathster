@@ -17,6 +17,7 @@ namespace Mathster
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<Repository>();
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -25,9 +26,10 @@ namespace Mathster
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();  //hej
+                app.UseDeveloperExceptionPage();  
             }
             app.UseStaticFiles();
+            app.UseSession();
             app.UseMvc();
         }
     }

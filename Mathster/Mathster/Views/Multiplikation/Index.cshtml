@@ -1,32 +1,36 @@
-﻿@model MultiplikationIndexVM
+﻿@model MultiplicationIndexVM
 
 
 
-<div>
-    @Model.CorrectAnswer
-</div>
 
 
-<div class="emptyContainer"></div>
-<div class="container">
+
+<div class="container" id="containerDiv" style="visibility:hidden">
     <div class="questionContainer">
-        <div class="question">@Model.MultipliedFactors.GetValue(0) x @Model.MultipliedFactors.GetValue(1)</div>
+        <div class="question" id="questionDiv"></div>
     </div>
 
     <div class="answers">
-
-        <div class="answer1 answer" >@Model.ResultOptions[0]</div>
-        <div class="answer2 answer"  >@Model.ResultOptions[1]</div>
-        <div class="answer3 answer" >@Model.ResultOptions[2]</div>
-        <div class="answer4 answer" >@Model.ResultOptions[3]</div>
-        <div class="correctAnswer" >@Model.CorrectAnswer</div>
-        
-        
+        <div class="answer1 answer" id="answerDiv1"></div>
+        <div class="answer2 answer" id="answerDiv2"></div>
+        <div class="answer3 answer" id="answerDiv3"></div>
+        <div class="answer4 answer" id="answerDiv4"></div>      
     </div>
 </div>
+
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Js/MultiplikationIndex.js"></script>
 <link href="~/Scripts/Mathpages.css" rel="stylesheet" />
+
+<script>
+    $(document).ready(function () {
+        getQuestion(@Model.Id);
+
+        $(".answer").click(function () {
+            getQuestion(@Model.Id);
+        });
+    });
+</script>

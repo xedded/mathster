@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Mathster.Models.ViewModels
 {
-    public class MultiplikationIndexVM
+    public class MultiplicationNewQuestionVM
     {
         public int[] MultipliedFactors { get; set; }
         public int[] ResultOptions { get; set; }
-        public int CorrectAnswer { get; set; } //Index??
+
     }
 }

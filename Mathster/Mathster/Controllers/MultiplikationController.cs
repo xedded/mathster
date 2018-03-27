@@ -23,9 +23,16 @@ namespace Mathster.Controllers
         [Route("Multiplikation/{id}")]
          public IActionResult Index(int id)
         {
-            var model = repository.MultiplicationRandomizer(id);
+            var model = repository.GetMultiplicationIndexVM(id);
 
             return View(model);
+        }
+        [Route("Multiplikation/nyUppgift/{id}")]
+        public MultiplicationNewQuestionVM NewQuestion(int id)
+        {
+            return repository.MultiplicationRandomizer(id);
+
+            
         }
     }
 }
