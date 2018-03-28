@@ -53,7 +53,7 @@ function getQuestion(id, clickedResult) {
 
             var factor1 = result.multipliedFactors[0];
             var factor2 = result.multipliedFactors[1];
-            
+            $("#boolDiv").text(result.questionIndex + "/" + result.questionTotal);
             $("#factor1").text(factor1);
             $("#x").text(" x ");
             $("#factor2").text(factor2);
