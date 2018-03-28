@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Mathster.Models;
 using Mathster.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -27,10 +28,29 @@ namespace Mathster.Controllers
 
             return View(model);
         }
-        [Route("Multiplikation/nyUppgift/{id}")]
-        public MultiplicationNewQuestionVM NewQuestion(int id)
+        [HttpPost]
+        [Route("Multiplikation/nyUppgift/{id}/{clickedAnswer}")]
+        public MultiplicationNewQuestionVM NewQuestion(int id, int clickedAnswer)
         {
-            return repository.MultiplicationRandomizer(id);
+            var answerBool= HttpContext.Session.GetInt32("AnswerBool");
+            bool b;
+            if (answerBool == clickedAnswer)
+                b = true;
+            else
+                b = false;
+
+
+                //Är session samma sak som clickedAnswer
+                //skapa en lista om clickedAnswer är null
+                //Lägg till true/false i model proppen
+                //lägg till räknare i andra proppen
+
+                var model = repository.MultiplicationRandomizer(id);
+            var factor1 = model.MultipliedFactors[0];
+            var factor2 = model.MultipliedFactors[1];
+            var resultOfFactors = factor1 * factor2;
+            HttpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+            return model;
 
             
         }

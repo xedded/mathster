@@ -27,12 +27,13 @@
 
 <script>
     $(document).ready(function () {
-        getQuestion(@Model.Id);
+        var clickedResult = null;
+        getQuestion(@Model.Id, clickedResult);
 
         $(".answer").click(function () {
-            getQuestion(@Model.Id);
-            var result = $(this).text();
-            console.log(result);
+            clickedResult = $(this).text();
+            getQuestion(@Model.Id, clickedResult);
+            console.log(clickedResult);
         });
     });
 </script>

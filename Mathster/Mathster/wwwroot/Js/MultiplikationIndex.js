@@ -1,7 +1,7 @@
-﻿function getQuestion(id) {
+﻿function getQuestion(id, clickedResult) {
     $.ajax({
-        url: "/multiplikation/nyUppgift/" + id,
-        type: "GET",
+        url: "/multiplikation/nyUppgift/" + id +  "/" + clickedResult,
+        type: "POST",
         data: null,
         success: function (result) {
             var factor1 = result.multipliedFactors[0];
