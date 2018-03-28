@@ -22,7 +22,7 @@ namespace Mathster.Controllers
         }
 
         [Route("Multiplikation/{id}")]
-         public IActionResult Index(int id)
+        public IActionResult Index(int id)
         {
             var model = repository.GetMultiplicationIndexVM(id);
 
@@ -32,27 +32,28 @@ namespace Mathster.Controllers
         [Route("Multiplikation/nyUppgift/{id}/{clickedAnswer}")]
         public MultiplicationNewQuestionVM NewQuestion(int id, int clickedAnswer)
         {
-            var answerBool= HttpContext.Session.GetInt32("AnswerBool");
+            var answerBool = HttpContext.Session.GetInt32("AnswerBool");
             bool b;
             if (answerBool == clickedAnswer)
                 b = true;
             else
                 b = false;
+            var model = repository.MultiplicationRandomizer(id);
+            model.PreviousCorrectAnswer = b;
 
 
-                //Är session samma sak som clickedAnswer
-                //skapa en lista om clickedAnswer är null
-                //Lägg till true/false i model proppen
-                //lägg till räknare i andra proppen
+            //Är session samma sak som clickedAnswer
+            //skapa en lista om clickedAnswer är null
+            //Lägg till true/false i model proppen
+            //lägg till räknare i andra proppen
 
-                var model = repository.MultiplicationRandomizer(id);
             var factor1 = model.MultipliedFactors[0];
             var factor2 = model.MultipliedFactors[1];
             var resultOfFactors = factor1 * factor2;
             HttpContext.Session.SetInt32("AnswerBool", resultOfFactors);
             return model;
 
-            
+
         }
     }
 }
