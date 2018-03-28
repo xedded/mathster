@@ -16,7 +16,7 @@ namespace Mathster.Models
 
         //    return countList;
         //}
-        public SubtractionIndexVM SubtractionRandomizer(int id)
+        public SubtractionIndexVM SubtractionRandomizer(int id) 
         {
             int a = 0;
             int b = 0;
@@ -188,7 +188,10 @@ namespace Mathster.Models
             MultiplicationNewQuestionVM multiplikationIndexVM = new MultiplicationNewQuestionVM
             {
                 MultipliedFactors = arrayProduct,
-                ResultOptions = arrayFakeNumbers
+                ResultOptions = arrayFakeNumbers,
+                PreviousCorrectAnswer = true,
+                QuestionIndex = 1,
+                QuestionTotal=20,
 
             };
             return multiplikationIndexVM;
