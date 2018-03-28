@@ -185,7 +185,7 @@ namespace Mathster.Models
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
 
-
+            
 
             MultiplicationNewQuestionVM multiplikationIndexVM = new MultiplicationNewQuestionVM
             {
