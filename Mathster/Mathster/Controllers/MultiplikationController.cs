@@ -6,6 +6,7 @@ using Mathster.Models;
 using Mathster.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,27 +31,63 @@ namespace Mathster.Controllers
         }
         [HttpPost]
         [Route("Multiplikation/nyUppgift/{id}/{clickedAnswer}")]
-        public MultiplicationNewQuestionVM NewQuestion(int id, int clickedAnswer)
+        public MultiplicationNewQuestionVM NewQuestion(int id, int? clickedAnswer)
         {
+
+            if (clickedAnswer == null)
+            {
+                List<string> userAnswers = new List<string>();
+
+                var str = JsonConvert.SerializeObject(userAnswers);
+                HttpContext.Session.SetString("ListOfAnswers", str);
+            }
+          
+             
+
             var answerBool = HttpContext.Session.GetInt32("AnswerBool");
-            bool b;
-            if (answerBool == clickedAnswer)
-                b = true;
-            else
-                b = false;
             
+            bool b;
+            var key = HttpContext.Session.GetString("ListOfAnswers");
+            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(key);
+            if (answerBool == clickedAnswer)
+            {
+
+                b = true;
+                listOfAnswers.Add("Rätt");
+                var str = JsonConvert.SerializeObject(listOfAnswers);
+                HttpContext.Session.SetString("ListOfAnswers", str);
+
+            }
+            
+            else
+            {
+                b = false;
+                listOfAnswers.Add("Fel");
+                var str = JsonConvert.SerializeObject(listOfAnswers);
+                HttpContext.Session.SetString("ListOfAnswers", str);
+            }
+            
+          
             var model = repository.MultiplicationRandomizer(id);
+            
+            
+          
             model.PreviousCorrectAnswer = b;
+            
+            
 
-
-            //Är session samma sak som clickedAnswer
-            //skapa en lista om clickedAnswer är null
-            //Lägg till true/false i model proppen
-            //lägg till räknare i andra proppen
+             model.QuestionIndex = listOfAnswers.Count;
+            if (model.QuestionIndex > 3)
+            {
+                
+            }
+            
 
             var factor1 = model.MultipliedFactors[0];
             var factor2 = model.MultipliedFactors[1];
             var resultOfFactors = factor1 * factor2;
+
+
             HttpContext.Session.SetInt32("AnswerBool", resultOfFactors);
             return model;
 
