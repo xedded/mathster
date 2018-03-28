@@ -38,6 +38,7 @@ namespace Mathster.Controllers
                 b = true;
             else
                 b = false;
+            
             var model = repository.MultiplicationRandomizer(id);
             model.PreviousCorrectAnswer = b;
 
