@@ -6,6 +6,7 @@
         success: function (result) {
             var factor1 = result.multipliedFactors[0];
             var factor2 = result.multipliedFactors[1];
+           
 
             $("#questionDiv").text(factor1 + " x " + factor2);
 
@@ -22,6 +23,8 @@
 
             $("#containerDiv").css("visibility", "visible");
 
+            console.log(result.previousCorrectAnswer);
+            
         }
     });
 
