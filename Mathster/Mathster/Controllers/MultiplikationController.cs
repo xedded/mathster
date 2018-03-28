@@ -80,6 +80,9 @@ namespace Mathster.Controllers
             if (model.QuestionIndex > 19)
             {
                 model.List = listOfAnswers;
+                model.MultipliedFactors = null;
+                model.ResultOptions = null;
+                return model;
             }
             
 
