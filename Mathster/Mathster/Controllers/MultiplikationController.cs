@@ -77,9 +77,9 @@ namespace Mathster.Controllers
             
 
              model.QuestionIndex = listOfAnswers.Count;
-            if (model.QuestionIndex > 3)
+            if (model.QuestionIndex > 19)
             {
-                
+                model.List = listOfAnswers;
             }
             
 

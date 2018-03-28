@@ -58,6 +58,19 @@ function getQuestion(id, clickedResult) {
             $("#x").text(" x ");
             $("#factor2").text(factor2);
 
+            var svar = result.list;
+            console.log(svar);
+            var numOfTrue = 0;
+            if (svar != null) {
+
+
+                for (var i = 0; i < 20; i++) {
+                    if (svar[i] == "Rätt")
+                        numOfTrue++; //här pontus, är den
+                }
+                console.log(numOfTrue)
+            }
+            
             var option1 = result.resultOptions[0];
             var option2 = result.resultOptions[1];
             var option3 = result.resultOptions[2];
