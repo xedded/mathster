@@ -7,7 +7,15 @@
     getQuestion(id, clickedResult);
 
     $(".answer").click(function () {
-
+        if ($(this).text() != ($(".factor1").text() * $(".factor2").text())) {
+            var bgColor = $(this).css("background-color")
+            $($(this)).css("background-color", "red");
+            sleep(2000).then(() => {
+                $($(this)).css("background-color", bgColor);
+                clickedResult = $(this).text();
+                getQuestion(id, clickedResult);
+            });
+        }
         if ($(".answer1").text() == ($(".factor1").text() * $(".factor2").text())) {
             $(".answer1").css("background-color", "green");
             sleep(2000).then(() => {
