@@ -77,7 +77,7 @@ namespace Mathster.Controllers
             
 
              model.QuestionIndex = listOfAnswers.Count;
-            if (model.QuestionIndex > 19)
+            if (model.QuestionIndex > 4)
             {
                 model.List = listOfAnswers;
                 model.MultipliedFactors = null;

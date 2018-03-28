@@ -1,7 +1,11 @@
 ﻿@model MultiplicationIndexVM
 
 
-
+<div id="resultDiv">
+    <h3 id="feedback"></h3>
+    <h2 id="result"></h2>
+    <p id="link"></p>
+</div>
 
 
 <div class="container" id="containerDiv" style="visibility:hidden">
@@ -24,6 +28,8 @@
 </div>
 
 
+
+
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
@@ -32,6 +38,8 @@
 
 <script>
     $(document).ready(function () {
+        $("#resultDiv").css("display", "none");
+
         loadPage(@Model.Id);
     });
 </script>

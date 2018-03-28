@@ -11,6 +11,7 @@ namespace Mathster.Controllers
     public class HomeController : Controller
     {
         // GET: /<controller>/
+        [Route("start")]
         [Route("")]
         public IActionResult Index()
         {
