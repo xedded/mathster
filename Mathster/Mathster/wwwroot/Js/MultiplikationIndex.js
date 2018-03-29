@@ -90,35 +90,22 @@ function getQuestion(level, gameType, clickedResult) {
             //Ändrat tills hit
             if (result.questionIndex < 5) {
 
-
-                var factor1 = result.factors[0];
-                var factor2 = result.factors[1];
-                $("#boolDiv").text(result.questionIndex + "/" + result.questionTotal);
-
+                sleep(1000).then(() => {
+                $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
                 clickedResult == result.previousCorrectAnswerIndex
-                $("#factor1").text(factor1);
-                if (gameType == "Multiplication") {
-                    $("#x").text(" x ");
-                }
-                if (gameType == "Division") {
-                    $("#x").text(" / ");
-                }
-                if (gameType == "Addition") {
-                    $("#x").text(" + ");
-                }
-                if (gameType == "Subtraction") {
-                    $("#x").text(" - ");
-                }
-                $("#factor2").text(factor2);
+                $("#factor1").text(result.factors[0]);
+                $("#factor2").text(result.factors[1]);
+                if (gameType == "Multiplication") ($("#x").text(" x "));
+                if (gameType == "Division") ($("#x").text(" / "));
+                if (gameType == "Addition") ($("#x").text(" + "));
+                if (gameType == "Subtraction") ($("#x").text(" - "));
 
-
-                $("#answerDiv1").text(result.resultOptions[0]);
-                $("#answerDiv2").text(result.resultOptions[1]);
-                $("#answerDiv3").text(result.resultOptions[2]);
-                $("#answerDiv4").text(result.resultOptions[3]);
+                for (var i = 1; i < 5; i++) {
+                    $("#answerDiv" + i).text(result.resultOptions[i - 1]);
+                }
 
                 $("#containerDiv").css("visibility", "visible");
-                
+                });
             }
             else {
                 $("#containerDiv").css("display", "none");
