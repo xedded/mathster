@@ -59,16 +59,35 @@
 
 
 function getQuestion(level, gameType, clickedResult) {
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
         data: null,
         success: function (result) {
-
-            if (clickedResult == result.previousCorrectAnswerIndex) {
-
+            //Ändrat
+            if (clickedResult == result.previousCorrectAnswerIndex && clickedResult != null) {
+                
+                var bgColor = $(".answer").eq(clickedResult).css("background-color");
+                $(".answer").eq(clickedResult).css("background-color", "green");
+                sleep(1000).then(() => {
+                    $(".answer").eq(clickedResult).css("background-color", bgColor);
+                });
             }
+            else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null){
+                var backgColor = $(".answer").eq(clickedResult).css("background-color");
+                $(".answer").eq(clickedResult).css("background-color", "red");
+                var backgroundColor = $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color");
+                $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
+                sleep(1000).then(() => {
+                    $(".answer").eq(clickedResult).css("background-color", backgColor);
+                    $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", backgroundColor);
 
+                });
+            }
+            //Ändrat tills hit
             if (result.questionIndex < 5) {
 
 
