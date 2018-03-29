@@ -18,7 +18,7 @@ namespace Mathster.Models
 
         //    return countList;
         //}
-         SubtractionIndexVM SubtractionRandomizer(int id) 
+        SubtractionIndexVM SubtractionRandomizer(int id)
         {
             int a = 0;
             int b = 0;
@@ -62,7 +62,7 @@ namespace Mathster.Models
             int rangeMin = product - 5;
             int rangeMax = product + 5;
 
-            if (number1<number2)
+            if (number1 < number2)
             {
                 number1 += number2;
             }
@@ -106,12 +106,12 @@ namespace Mathster.Models
             };
             return subtractionIndexVM;
         }
-         public MultiplicationIndexVM GetMultiplicationIndexVM (Level level, GameType gameType)
+        public MultiplicationIndexVM GetMultiplicationIndexVM(Level level, GameType gameType)
         {
-        
-            return new MultiplicationIndexVM { Level = level, GameType = gameType};
+
+            return new MultiplicationIndexVM { Level = level, GameType = gameType };
         }
-         GameNewQuestionVM MultiplicationRandomizer(Level level)
+        GameNewQuestionVM MultiplicationRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
@@ -146,8 +146,8 @@ namespace Mathster.Models
                     break;
             }
 
-            
-           
+
+
             Random rdm = new Random();
             int number1 = rdm.Next(a, b);  //Ändrat
             int number2 = rdm.Next(c, d);
@@ -187,21 +187,21 @@ namespace Mathster.Models
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
 
-            
+
 
             GameNewQuestionVM gameNewQuestion = new GameNewQuestionVM
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                PreviousCorrectAnswer=null,
+                PreviousCorrectAnswer = null,
                 QuestionIndex = 1,
-                QuestionTotal=20,
+                QuestionTotal = 20,
 
             };
             return gameNewQuestion;
 
         }
-         GameNewQuestionVM DivisionRandomizer(Level level)
+        GameNewQuestionVM DivisionRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
@@ -375,43 +375,42 @@ namespace Mathster.Models
         public GameNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
         {
             const string correctPreviousResultKey = "correctPreviousResult";
-            const string listOfAnswersKey = "ListOfAnswers";
+            const string correctAnswerCountKey = "correctAnswerCount";
+            const string currentQuestionIndexKey = "currentQuestionIndex";
 
             if (clickedAnswer == null)
             {
-                List<string> userAnswers = new List<string>();
+                httpContext.Session.SetInt32(correctAnswerCountKey, 0);
+                httpContext.Session.SetInt32(currentQuestionIndexKey, 0);
 
-                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(userAnswers));
             }
-          
-            var correctPreviousResult = httpContext.Session.GetInt32(correctPreviousResultKey);
-            
-            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(httpContext.Session.GetString(listOfAnswersKey));
 
-            bool isAnswerCorrect;
+            var correctPreviousResult = httpContext.Session.GetInt32(correctPreviousResultKey);
+
+            bool isAnswerCorrect = false;
             if (correctPreviousResult == clickedAnswer)
             {
                 isAnswerCorrect = true;
-                listOfAnswers.Add("Rätt");
-                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(listOfAnswers));
+                // Increase correctAnswerIndex
 
+                var correctAnswerCount = httpContext.Session.GetInt32(correctAnswerCountKey);
+                correctAnswerCount++;
+                httpContext.Session.SetInt32(correctAnswerCountKey, correctAnswerCount.Value);
             }
-            else
-            {
-                isAnswerCorrect = false;
-                listOfAnswers.Add("Fel");
-                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(listOfAnswers));
-            }
+            // Increase currentQuestionIndex
+            var currentQuestionIndex = httpContext.Session.GetInt32(currentQuestionIndexKey);
+            currentQuestionIndex++;
+            httpContext.Session.SetInt32(currentQuestionIndexKey, currentQuestionIndex.Value);
+
 
             var model = new GameNewQuestionVM();
-                
+
             switch (gameType)
             {
                 case GameType.Multiplication:
                     model = MultiplicationRandomizer(level);
                     model.PreviousCorrectAnswer = isAnswerCorrect;
-                    model.QuestionIndex = listOfAnswers.Count;
-                    model.List = listOfAnswers;
+                    model.QuestionIndex = currentQuestionIndex.Value;
                     var factor1 = model.Factors[0];
                     var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
@@ -419,23 +418,21 @@ namespace Mathster.Models
                     return model;
 
 
-                    
+
                 case GameType.Division:
-                     model = DivisionRandomizer(level);
+                    model = DivisionRandomizer(level);
                     model.PreviousCorrectAnswer = isAnswerCorrect;
-                    model.QuestionIndex = listOfAnswers.Count;
-                    model.List = listOfAnswers;
-                     factor1 = model.Factors[0];
-                     factor2 = model.Factors[1];
-                     resultOfFactors = factor1 / factor2;
+                    model.QuestionIndex = currentQuestionIndex.Value;
+                    factor1 = model.Factors[0];
+                    factor2 = model.Factors[1];
+                    resultOfFactors = factor1 / factor2;
                     httpContext.Session.SetInt32(correctPreviousResultKey, resultOfFactors);
                     return model;
-                    
+
                 case GameType.Addition:
                     model = MultiplicationRandomizer(level);
                     model.PreviousCorrectAnswer = isAnswerCorrect;
-                    model.QuestionIndex = listOfAnswers.Count;
-                    model.List = listOfAnswers;
+                    model.QuestionIndex = currentQuestionIndex.Value;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 + factor2;
@@ -444,8 +441,7 @@ namespace Mathster.Models
                 case GameType.Subtraction:
                     model = MultiplicationRandomizer(level);
                     model.PreviousCorrectAnswer = isAnswerCorrect;
-                    model.QuestionIndex = listOfAnswers.Count;
-                    model.List = listOfAnswers;
+                    model.QuestionIndex = currentQuestionIndex.Value;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 - factor2;
@@ -457,7 +453,7 @@ namespace Mathster.Models
 
             }
 
-            
+
         }
     }
 }

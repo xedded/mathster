@@ -13,7 +13,6 @@ namespace Mathster.Models.ViewModels
         public bool? PreviousCorrectAnswer { get; set; }
         public int QuestionIndex { get; set; }
         public int QuestionTotal { get; set; }
-        public List<string> List { get; set; }
 
     }
 }
