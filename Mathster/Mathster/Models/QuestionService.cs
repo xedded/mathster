@@ -374,7 +374,7 @@ namespace Mathster.Models
 
         public GameNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
         {
-            
+            const string correctPreviousResultKey = "correctPreviousResult";
 
             if (clickedAnswer == null)
             {
@@ -384,14 +384,14 @@ namespace Mathster.Models
                 httpContext.Session.SetString("ListOfAnswers", str);
             }
           
-            var answerBool = httpContext.Session.GetInt32("AnswerBool");
+            var correctPreviousResult = httpContext.Session.GetInt32(correctPreviousResultKey);
             var key = httpContext.Session.GetString("ListOfAnswers");
             var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(key);
 
-            bool b;
-            if (answerBool == clickedAnswer)
+            bool isAnswerCorrect;
+            if (correctPreviousResult == clickedAnswer)
             {
-                b = true;
+                isAnswerCorrect = true;
                 listOfAnswers.Add("Rätt");
                 var str = JsonConvert.SerializeObject(listOfAnswers);
                 httpContext.Session.SetString("ListOfAnswers", str);
@@ -399,7 +399,7 @@ namespace Mathster.Models
             }
             else
             {
-                b = false;
+                isAnswerCorrect = false;
                 listOfAnswers.Add("Fel");
                 var str = JsonConvert.SerializeObject(listOfAnswers);
                 httpContext.Session.SetString("ListOfAnswers", str);
@@ -411,67 +411,55 @@ namespace Mathster.Models
             {
                 case GameType.Multiplication:
                     model = MultiplicationRandomizer(level);
-                    model.PreviousCorrectAnswer = b;
+                    model.PreviousCorrectAnswer = isAnswerCorrect;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
                     var factor1 = model.Factors[0];
                     var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
-                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    httpContext.Session.SetInt32(correctPreviousResultKey, resultOfFactors);
                     return model;
 
 
                     
                 case GameType.Division:
                      model = DivisionRandomizer(level);
-                    model.PreviousCorrectAnswer = b;
+                    model.PreviousCorrectAnswer = isAnswerCorrect;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
                      factor1 = model.Factors[0];
                      factor2 = model.Factors[1];
                      resultOfFactors = factor1 / factor2;
-                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    httpContext.Session.SetInt32(correctPreviousResultKey, resultOfFactors);
                     return model;
                     
                 case GameType.Addition:
                     model = MultiplicationRandomizer(level);
-                    model.PreviousCorrectAnswer = b;
+                    model.PreviousCorrectAnswer = isAnswerCorrect;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 + factor2;
-                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    httpContext.Session.SetInt32(correctPreviousResultKey, resultOfFactors);
                     return model;
                 case GameType.Subtraction:
                     model = MultiplicationRandomizer(level);
-                    model.PreviousCorrectAnswer = b;
+                    model.PreviousCorrectAnswer = isAnswerCorrect;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
-                    resultOfFactors = factor1 * factor2;
-                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    resultOfFactors = factor1 - factor2;
+                    httpContext.Session.SetInt32(correctPreviousResultKey, resultOfFactors);
                     return model;
-                    
-                
+
+                default:
+                    throw new NotImplementedException();
+
             }
 
-            return null;
-            //var model = MultiplicationRandomizer(id);
-            //model.PreviousCorrectAnswer = b;
-            // model.QuestionIndex = listOfAnswers.Count;
-            //model.List = listOfAnswers;
             
-            
-
-            //var factor1 = model.MultipliedFactors[0];
-            //var factor2 = model.MultipliedFactors[1];
-            //var resultOfFactors = factor1 * factor2;
-
-
-            //httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
-            //return model;
         }
     }
 }
