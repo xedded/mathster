@@ -386,7 +386,7 @@ namespace Mathster.Models
           
             var correctPreviousResult = httpContext.Session.GetInt32(correctPreviousResultKey);
             
-            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(httpContext.Session.GetString("ListOfAnswers"));
+            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(httpContext.Session.GetString(listOfAnswersKey));
 
             bool isAnswerCorrect;
             if (correctPreviousResult == clickedAnswer)
