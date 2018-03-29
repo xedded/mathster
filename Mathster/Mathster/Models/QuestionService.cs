@@ -193,7 +193,7 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                                QuestionTotal = 20,
+                QuestionTotal = 20,
 
             };
             return gameNewQuestion;
@@ -386,7 +386,7 @@ namespace Mathster.Models
             var correctPreviousIndex = httpContext.Session.GetInt32(correctPreviousIndexKey);
 
             bool isAnswerCorrect = false;
-            if (correctPreviousIndex == clickedIndex)
+            if (correctPreviousIndex == clickedIndex && correctPreviousIndex != null)
             {
                 isAnswerCorrect = true;
                 // Increase correctAnswerIndex
@@ -412,9 +412,10 @@ namespace Mathster.Models
                     var factor1 = model.Factors[0];
                     var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
-                    httpContext.Session.SetInt32(correctPreviousIndexKey, model.ResultOptions.Single(o => o == resultOfFactors));
+                    //httpContext.Session.SetInt32(correctPreviousIndexKey, model.ResultOptions.Single(o => o == resultOfFactors));
+                    httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
                     return model;
-                    
+
                 case GameType.Division:
                     model = DivisionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
@@ -422,7 +423,9 @@ namespace Mathster.Models
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 / factor2;
-                    httpContext.Session.SetInt32(correctPreviousIndexKey, resultOfFactors);
+                    //httpContext.Session.SetInt32(correctPreviousIndexKey, model.ResultOptions.Single(o => o == resultOfFactors));
+                    httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
+
                     return model;
 
                 case GameType.Addition:
@@ -450,6 +453,17 @@ namespace Mathster.Models
             }
 
 
+        }
+
+        private int GetIndexOfPreviousQuestion(int[] resultOptions, int resultOfFactors)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (resultOptions[i] == resultOfFactors)
+                    return i;
+
+            }
+            return 0;
         }
     }
 }

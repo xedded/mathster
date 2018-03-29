@@ -11,49 +11,49 @@
 
 
     $(".answer").click(function () {
-        clickedResult = $(this).text();
+        clickedResult = $(".answer").index(this);
+        getQuestion(level, gameType, clickedResult);
+        //var bgColor = $(this).css("background-color")
+        //if ($(this).text() != ($(".factor1").text() / $(".factor2").text())) {
+        //    $($(this)).css("background-color", "red");
+        //}
 
-        var bgColor = $(this).css("background-color")
-        if ($(this).text() != ($(".factor1").text() / $(".factor2").text())) {
-            $($(this)).css("background-color", "red");
-        }
+        //if ($(".answer1").text() == ($(".factor1").text() / $(".factor2").text())) {
+        //    $(".answer1").css("background-color", "green");
+        //    sleep(1000).then(() => {
+        //        $(".answer1").css("background-color", "#47826d");
+        //        $($(this)).css("background-color", bgColor);
 
-        if ($(".answer1").text() == ($(".factor1").text() / $(".factor2").text())) {
-            $(".answer1").css("background-color", "green");
-            sleep(1000).then(() => {
-                $(".answer1").css("background-color", "#47826d");
-                $($(this)).css("background-color", bgColor);
+        //        getQuestion(level, gameType, clickedResult);
+        //    });
+        //}
+        //if ($(".answer2").text() == ($(".factor1").text() / $(".factor2").text())) {
+        //    $(".answer2").css("background-color", "green");
+        //    sleep(1000).then(() => {
+        //        $(".answer2").css("background-color", "#87b52d");
+        //        $($(this)).css("background-color", bgColor);
 
-                getQuestion(level, gameType, clickedResult);
-            });
-        }
-        if ($(".answer2").text() == ($(".factor1").text() / $(".factor2").text())) {
-            $(".answer2").css("background-color", "green");
-            sleep(1000).then(() => {
-                $(".answer2").css("background-color", "#87b52d");
-                $($(this)).css("background-color", bgColor);
+        //        getQuestion(level, gameType, clickedResult);
+        //    });
+        //}
+        //if ($(".answer3").text() == ($(".factor1").text() / $(".factor2").text())) {
+        //    $(".answer3").css("background-color", "green");
+        //    sleep(1000).then(() => {
+        //        $(".answer3").css("background-color", "#60b394");
+        //        $($(this)).css("background-color", bgColor);
 
-                getQuestion(level, gameType, clickedResult);
-            });
-        }
-        if ($(".answer3").text() == ($(".factor1").text() / $(".factor2").text())) {
-            $(".answer3").css("background-color", "green");
-            sleep(1000).then(() => {
-                $(".answer3").css("background-color", "#60b394");
-                $($(this)).css("background-color", bgColor);
+        //        getQuestion(level, gameType, clickedResult);
+        //    });
+        //}
+        //if ($(".answer4").text() == ($(".factor1").text() / $(".factor2").text())) {
+        //    $(".answer4").css("background-color", "green");
+        //    sleep(1000).then(() => {
+        //        $(".answer4").css("background-color", "#a6d13d");
+        //        $($(this)).css("background-color", bgColor);
 
-                getQuestion(level, gameType, clickedResult);
-            });
-        }
-        if ($(".answer4").text() == ($(".factor1").text() / $(".factor2").text())) {
-            $(".answer4").css("background-color", "green");
-            sleep(1000).then(() => {
-                $(".answer4").css("background-color", "#a6d13d");
-                $($(this)).css("background-color", bgColor);
-
-                getQuestion(level, gameType, clickedResult);
-            });
-        }
+        //        getQuestion(level, gameType, clickedResult);
+        //    });
+        //}
     });
 };
 
@@ -65,14 +65,18 @@ function getQuestion(level, gameType, clickedResult) {
         data: null,
         success: function (result) {
 
+            if (clickedResult == result.previousCorrectAnswerIndex) {
+
+            }
 
             if (result.questionIndex < 5) {
+
 
                 var factor1 = result.factors[0];
                 var factor2 = result.factors[1];
                 $("#boolDiv").text(result.questionIndex + "/" + result.questionTotal);
 
-
+                clickedResult == result.previousCorrectAnswerIndex
                 $("#factor1").text(factor1);
                 if (gameType == "Multiplication") {
                     $("#x").text(" x ");
@@ -89,18 +93,13 @@ function getQuestion(level, gameType, clickedResult) {
                 $("#factor2").text(factor2);
 
 
-
-                var option1 = result.resultOptions[0];
-                var option2 = result.resultOptions[1];
-                var option3 = result.resultOptions[2];
-                var option4 = result.resultOptions[3];
-
-                $("#answerDiv1").text(option1);
-                $("#answerDiv2").text(option2);
-                $("#answerDiv3").text(option3);
-                $("#answerDiv4").text(option4);
+                $("#answerDiv1").text(result.resultOptions[0]);
+                $("#answerDiv2").text(result.resultOptions[1]);
+                $("#answerDiv3").text(result.resultOptions[2]);
+                $("#answerDiv4").text(result.resultOptions[3]);
 
                 $("#containerDiv").css("visibility", "visible");
+                
             }
             else {
                 $("#containerDiv").css("display", "none");
@@ -138,6 +137,7 @@ function getQuestion(level, gameType, clickedResult) {
         }
     });
 }
+
 
 
 
