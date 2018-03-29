@@ -111,7 +111,7 @@ namespace Mathster.Models
         
             return new MultiplicationIndexVM { Level = level, GameType = gameType};
         }
-         MultiplicationNewQuestionVM MultiplicationRandomizer(Level level)
+         GameNewQuestionVM MultiplicationRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
@@ -189,42 +189,42 @@ namespace Mathster.Models
 
             
 
-            MultiplicationNewQuestionVM multiplikationIndexVM = new MultiplicationNewQuestionVM
+            GameNewQuestionVM gameNewQuestion = new GameNewQuestionVM
             {
-                MultipliedFactors = arrayProduct,
+                Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
                 PreviousCorrectAnswer=null,
                 QuestionIndex = 1,
                 QuestionTotal=20,
 
             };
-            return multiplikationIndexVM;
+            return gameNewQuestion;
 
         }
-         DivisionIndexVM DivisionRandomizer(int id)
+         GameNewQuestionVM DivisionRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
             int c = 0;
             int d = 0;
 
-            switch (id)
+            switch (level)
             {
-                case 1:
+                case Level.Easy:
                     a = 2;
                     b = 6;
                     c = 0;
                     d = 11;
                     break;
 
-                case 2:
+                case Level.Medium:
                     a = 3;
                     b = 11;
                     c = 5;
                     d = 11;
                     break;
 
-                case 3:
+                case Level.Hard:
                     a = 6;
                     b = 16;
                     c = 3;
@@ -274,14 +274,16 @@ namespace Mathster.Models
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
 
-            DivisionIndexVM divisionIndexVM = new DivisionIndexVM
+            GameNewQuestionVM gameNewQuestion = new GameNewQuestionVM
             {
-                CorrectAnswer = number2,
-                NumeratiorDenumerator = arrayProduct,
-                ResultOptions = arrayFakeNumbers
+                Factors = arrayProduct,
+                ResultOptions = arrayFakeNumbers,
+                PreviousCorrectAnswer = null,
+                QuestionIndex = 1,
+                QuestionTotal = 20,
 
             };
-            return divisionIndexVM;
+            return gameNewQuestion;
         }
 
 
@@ -370,7 +372,7 @@ namespace Mathster.Models
 
         }
 
-        public MultiplicationNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
+        public GameNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
         {
             
 
@@ -403,15 +405,17 @@ namespace Mathster.Models
                 httpContext.Session.SetString("ListOfAnswers", str);
             }
 
+            var model = new GameNewQuestionVM();
+                
             switch (gameType)
             {
                 case GameType.Multiplication:
-                    var model = MultiplicationRandomizer(level);
+                    model = MultiplicationRandomizer(level);
                     model.PreviousCorrectAnswer = b;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
-                    var factor1 = model.MultipliedFactors[0];
-                    var factor2 = model.MultipliedFactors[1];
+                    var factor1 = model.Factors[0];
+                    var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
                     httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
                     return model;
@@ -419,13 +423,13 @@ namespace Mathster.Models
 
                     
                 case GameType.Division:
-                     model = MultiplicationRandomizer(level);
+                     model = DivisionRandomizer(level);
                     model.PreviousCorrectAnswer = b;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
-                     factor1 = model.MultipliedFactors[0];
-                     factor2 = model.MultipliedFactors[1];
-                     resultOfFactors = factor1 * factor2;
+                     factor1 = model.Factors[0];
+                     factor2 = model.Factors[1];
+                     resultOfFactors = factor1 / factor2;
                     httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
                     return model;
                     
@@ -434,9 +438,9 @@ namespace Mathster.Models
                     model.PreviousCorrectAnswer = b;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
-                    factor1 = model.MultipliedFactors[0];
-                    factor2 = model.MultipliedFactors[1];
-                    resultOfFactors = factor1 * factor2;
+                    factor1 = model.Factors[0];
+                    factor2 = model.Factors[1];
+                    resultOfFactors = factor1 + factor2;
                     httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
                     return model;
                 case GameType.Subtraction:
@@ -444,8 +448,8 @@ namespace Mathster.Models
                     model.PreviousCorrectAnswer = b;
                     model.QuestionIndex = listOfAnswers.Count;
                     model.List = listOfAnswers;
-                    factor1 = model.MultipliedFactors[0];
-                    factor2 = model.MultipliedFactors[1];
+                    factor1 = model.Factors[0];
+                    factor2 = model.Factors[1];
                     resultOfFactors = factor1 * factor2;
                     httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
                     return model;

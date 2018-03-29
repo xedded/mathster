@@ -31,7 +31,7 @@ namespace Mathster.Controllers
         }
         [HttpPost]
         [Route("{gametype}/nextquestion/{level}/{clickedAnswer}")]
-        public MultiplicationNewQuestionVM NewQuestion(Level level, int? clickedAnswer, GameType gameType)
+        public GameNewQuestionVM NewQuestion(Level level, int? clickedAnswer, GameType gameType)
         {
             return questionService.GetNewQuestion(level, clickedAnswer, HttpContext, gameType);
             

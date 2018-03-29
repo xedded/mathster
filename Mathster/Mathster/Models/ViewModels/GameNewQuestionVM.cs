@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Mathster.Models.ViewModels
 {
-    public class MultiplicationNewQuestionVM
+    public class GameNewQuestionVM
     {
-        public int[] MultipliedFactors { get; set; }
+        public int[] Factors { get; set; }
         public int[] ResultOptions { get; set; }
         
         public bool? PreviousCorrectAnswer { get; set; }
