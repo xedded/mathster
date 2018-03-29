@@ -10,7 +10,7 @@ namespace Mathster.Models.ViewModels
         public int[] Factors { get; set; }
         public int[] ResultOptions { get; set; }
         
-        public bool? PreviousCorrectAnswer { get; set; }
+        public int? PreviousCorrectAnswerIndex { get; set; }
         public int QuestionIndex { get; set; }
         public int QuestionTotal { get; set; }
 
