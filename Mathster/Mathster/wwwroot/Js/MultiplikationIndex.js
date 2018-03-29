@@ -94,13 +94,14 @@ function getQuestion(id, clickedResult) {
                 $("#resultDiv").css("display", "block");
                 var numOfTrue = 0;
                 var svar = result.list;
+                console.log(svar);
                 if (svar != null) {
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 1; i < 5; i++) {
                         if (svar[i] == "Rätt") {
                             numOfTrue++;
                         }
                     }
-                    
+                    console.log(numOfTrue);
                     $("#resultDiv").css("height", "200px");
                     $("#resultDiv").css("width", "100px");
                     $("#resultDiv").css("background-color", "#60b394");

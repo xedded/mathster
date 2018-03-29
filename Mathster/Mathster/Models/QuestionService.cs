@@ -1,4 +1,6 @@
 ﻿using Mathster.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mathster.Models
 {
-    public class Repository
+    public class QuestionService
     {
         //List<char> countList = new List<char>();
         //public List<char> CorrectAnswersCounted()
@@ -16,7 +18,7 @@ namespace Mathster.Models
 
         //    return countList;
         //}
-        public SubtractionIndexVM SubtractionRandomizer(int id) 
+         SubtractionIndexVM SubtractionRandomizer(int id) 
         {
             int a = 0;
             int b = 0;
@@ -104,12 +106,12 @@ namespace Mathster.Models
             };
             return subtractionIndexVM;
         }
-        public MultiplicationIndexVM GetMultiplicationIndexVM (int id)
+         public MultiplicationIndexVM GetMultiplicationIndexVM (int id)
         {
 
             return new MultiplicationIndexVM { Id = id };
         }
-        public MultiplicationNewQuestionVM MultiplicationRandomizer(int id)
+         MultiplicationNewQuestionVM MultiplicationRandomizer(int id)
         {
             int a = 0;
             int b = 0;
@@ -199,7 +201,7 @@ namespace Mathster.Models
             return multiplikationIndexVM;
 
         }
-        public DivisionIndexVM DivisionRandomizer(int id)
+         DivisionIndexVM DivisionRandomizer(int id)
         {
             int a = 0;
             int b = 0;
@@ -284,7 +286,7 @@ namespace Mathster.Models
 
 
         //Addition
-        public AdditionIndexVM AdditionRandomizer(int id)
+        AdditionIndexVM AdditionRandomizer(int id)
         {
             int a = 0;
             int b = 0;
@@ -366,6 +368,60 @@ namespace Mathster.Models
             };
             return additionIndexVM;
 
+        }
+
+        public MultiplicationNewQuestionVM GetNewQuestion(int id, int? clickedAnswer, HttpContext httpContext)
+        {
+            if (clickedAnswer == null)
+            {
+                List<string> userAnswers = new List<string>();
+
+                var str = JsonConvert.SerializeObject(userAnswers);
+                httpContext.Session.SetString("ListOfAnswers", str);
+            }
+          
+            var answerBool = httpContext.Session.GetInt32("AnswerBool");
+            var key = httpContext.Session.GetString("ListOfAnswers");
+            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(key);
+
+            bool b;
+            if (answerBool == clickedAnswer)
+            {
+                b = true;
+                listOfAnswers.Add("Rätt");
+                var str = JsonConvert.SerializeObject(listOfAnswers);
+                httpContext.Session.SetString("ListOfAnswers", str);
+
+            }
+            else
+            {
+                b = false;
+                listOfAnswers.Add("Fel");
+                var str = JsonConvert.SerializeObject(listOfAnswers);
+                httpContext.Session.SetString("ListOfAnswers", str);
+            }
+
+
+            var model = MultiplicationRandomizer(id);
+            model.PreviousCorrectAnswer = b;
+             model.QuestionIndex = listOfAnswers.Count;
+            model.List = listOfAnswers;
+            //if (model.QuestionIndex > 4)
+            //{
+            //    model.List = listOfAnswers;
+            //    model.MultipliedFactors = null;
+            //    model.ResultOptions = null;
+            //    return model;
+            //}
+            
+
+            var factor1 = model.MultipliedFactors[0];
+            var factor2 = model.MultipliedFactors[1];
+            var resultOfFactors = factor1 * factor2;
+
+
+            httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+            return model;
         }
     }
 }

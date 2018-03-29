@@ -11,18 +11,18 @@ namespace Mathster.Controllers
 {
     public class DivisionController : Controller
     {
-        private readonly Repository repository;
-        public DivisionController(Repository repository)
+        private readonly QuestionService repository;
+        public DivisionController(QuestionService repository)
         {
             this.repository = repository;
         }
 
-        [Route("/division/{id}")]
-        public IActionResult Index(int id)
-        {
-            var model = repository.DivisionRandomizer(id);
+        //[Route("/division/{id}")]
+        //public IActionResult Index(int id)
+        //{
+        //    var model = repository.DivisionRandomizer(id);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
     }
 }

@@ -9,18 +9,18 @@ namespace Mathster.Controllers
 {
     public class AdditionController:Controller
     {
-        private readonly Repository repository;
-        public AdditionController(Repository repository)
+        private readonly QuestionService repository;
+        public AdditionController(QuestionService repository)
         {
             this.repository = repository;
         }
 
-        [Route("/Addition/{id}")]
-        public IActionResult Index(int id)
-        {
-            var model = repository.AdditionRandomizer(id);
+        //[Route("/Addition/{id}")]
+        //public IActionResult Index(int id)
+        //{
+        //    var model = repository.AdditionRandomizer(id);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
     }
 }

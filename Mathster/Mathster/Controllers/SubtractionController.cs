@@ -12,18 +12,18 @@ namespace Mathster.Controllers
 {
     public class SubtractionController : Controller
     {
-        private readonly Repository repository;
-        public SubtractionController(Repository repository)
+        private readonly QuestionService repository;
+        public SubtractionController(QuestionService repository)
         {
             this.repository = repository;
         }
 
-        [Route("/Subtraktion/{id}")]
-         public IActionResult Index(int id)
-        {
-            var model = repository.SubtractionRandomizer(id);
+        //[Route("/Subtraktion/{id}")]
+        // public IActionResult Index(int id)
+        //{
+        //    var model = repository.SubtractionRandomizer(id);
 
-            return View(model);
-        }
+        //    return View(model);
+        //}
     }
 }
