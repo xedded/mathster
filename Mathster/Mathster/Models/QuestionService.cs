@@ -375,34 +375,32 @@ namespace Mathster.Models
         public GameNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
         {
             const string correctPreviousResultKey = "correctPreviousResult";
+            const string listOfAnswersKey = "ListOfAnswers";
 
             if (clickedAnswer == null)
             {
                 List<string> userAnswers = new List<string>();
 
-                var str = JsonConvert.SerializeObject(userAnswers);
-                httpContext.Session.SetString("ListOfAnswers", str);
+                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(userAnswers));
             }
           
             var correctPreviousResult = httpContext.Session.GetInt32(correctPreviousResultKey);
-            var key = httpContext.Session.GetString("ListOfAnswers");
-            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(key);
+            
+            var listOfAnswers = JsonConvert.DeserializeObject<List<string>>(httpContext.Session.GetString("ListOfAnswers"));
 
             bool isAnswerCorrect;
             if (correctPreviousResult == clickedAnswer)
             {
                 isAnswerCorrect = true;
                 listOfAnswers.Add("Rätt");
-                var str = JsonConvert.SerializeObject(listOfAnswers);
-                httpContext.Session.SetString("ListOfAnswers", str);
+                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(listOfAnswers));
 
             }
             else
             {
                 isAnswerCorrect = false;
                 listOfAnswers.Add("Fel");
-                var str = JsonConvert.SerializeObject(listOfAnswers);
-                httpContext.Session.SetString("ListOfAnswers", str);
+                httpContext.Session.SetString(listOfAnswersKey, JsonConvert.SerializeObject(listOfAnswers));
             }
 
             var model = new GameNewQuestionVM();
