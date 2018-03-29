@@ -7,6 +7,7 @@ namespace Mathster.Models.ViewModels
 {
     public class MultiplicationIndexVM
     {
-        public int Id { get; set; }
+        public Level Level { get; set; }
+        public GameType GameType { get; set; }
     }
 }

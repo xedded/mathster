@@ -39,7 +39,8 @@
 <script>
     $(document).ready(function () {
         $("#resultDiv").css("display", "none");
+        
 
-        loadPage(@Model.Id);
+        loadPage("@Model.Level","@Model.GameType");
     });
 </script>

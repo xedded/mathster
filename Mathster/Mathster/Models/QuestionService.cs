@@ -106,35 +106,35 @@ namespace Mathster.Models
             };
             return subtractionIndexVM;
         }
-         public MultiplicationIndexVM GetMultiplicationIndexVM (int id)
+         public MultiplicationIndexVM GetMultiplicationIndexVM (Level level, GameType gameType)
         {
-
-            return new MultiplicationIndexVM { Id = id };
+        
+            return new MultiplicationIndexVM { Level = level, GameType = gameType};
         }
-         MultiplicationNewQuestionVM MultiplicationRandomizer(int id)
+         MultiplicationNewQuestionVM MultiplicationRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
             int c = 0;
             int d = 0;
 
-            switch (id)
+            switch (level)
             {
-                case 1:
+                case Level.Easy:
                     a = 2;
                     b = 6;
                     c = 0;
                     d = 11;
                     break;
 
-                case 2:
+                case Level.Medium:
                     a = 3;
                     b = 11;
                     c = 5;
                     d = 11;
                     break;
 
-                case 3:
+                case Level.Hard:
                     a = 6;
                     b = 16;
                     c = 3;
@@ -370,8 +370,10 @@ namespace Mathster.Models
 
         }
 
-        public MultiplicationNewQuestionVM GetNewQuestion(int id, int? clickedAnswer, HttpContext httpContext)
+        public MultiplicationNewQuestionVM GetNewQuestion(Level level, int? clickedAnswer, HttpContext httpContext, GameType gameType)
         {
+            
+
             if (clickedAnswer == null)
             {
                 List<string> userAnswers = new List<string>();
@@ -401,27 +403,71 @@ namespace Mathster.Models
                 httpContext.Session.SetString("ListOfAnswers", str);
             }
 
+            switch (gameType)
+            {
+                case GameType.Multiplication:
+                    var model = MultiplicationRandomizer(level);
+                    model.PreviousCorrectAnswer = b;
+                    model.QuestionIndex = listOfAnswers.Count;
+                    model.List = listOfAnswers;
+                    var factor1 = model.MultipliedFactors[0];
+                    var factor2 = model.MultipliedFactors[1];
+                    var resultOfFactors = factor1 * factor2;
+                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    return model;
 
-            var model = MultiplicationRandomizer(id);
-            model.PreviousCorrectAnswer = b;
-             model.QuestionIndex = listOfAnswers.Count;
-            model.List = listOfAnswers;
-            //if (model.QuestionIndex > 4)
-            //{
-            //    model.List = listOfAnswers;
-            //    model.MultipliedFactors = null;
-            //    model.ResultOptions = null;
-            //    return model;
-            //}
+
+                    
+                case GameType.Division:
+                     model = MultiplicationRandomizer(level);
+                    model.PreviousCorrectAnswer = b;
+                    model.QuestionIndex = listOfAnswers.Count;
+                    model.List = listOfAnswers;
+                     factor1 = model.MultipliedFactors[0];
+                     factor2 = model.MultipliedFactors[1];
+                     resultOfFactors = factor1 * factor2;
+                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    return model;
+                    
+                case GameType.Addition:
+                    model = MultiplicationRandomizer(level);
+                    model.PreviousCorrectAnswer = b;
+                    model.QuestionIndex = listOfAnswers.Count;
+                    model.List = listOfAnswers;
+                    factor1 = model.MultipliedFactors[0];
+                    factor2 = model.MultipliedFactors[1];
+                    resultOfFactors = factor1 * factor2;
+                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    return model;
+                case GameType.Subtraction:
+                    model = MultiplicationRandomizer(level);
+                    model.PreviousCorrectAnswer = b;
+                    model.QuestionIndex = listOfAnswers.Count;
+                    model.List = listOfAnswers;
+                    factor1 = model.MultipliedFactors[0];
+                    factor2 = model.MultipliedFactors[1];
+                    resultOfFactors = factor1 * factor2;
+                    httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+                    return model;
+                    
+                
+            }
+
+            return null;
+            //var model = MultiplicationRandomizer(id);
+            //model.PreviousCorrectAnswer = b;
+            // model.QuestionIndex = listOfAnswers.Count;
+            //model.List = listOfAnswers;
+            
             
 
-            var factor1 = model.MultipliedFactors[0];
-            var factor2 = model.MultipliedFactors[1];
-            var resultOfFactors = factor1 * factor2;
+            //var factor1 = model.MultipliedFactors[0];
+            //var factor2 = model.MultipliedFactors[1];
+            //var resultOfFactors = factor1 * factor2;
 
 
-            httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
-            return model;
+            //httpContext.Session.SetInt32("AnswerBool", resultOfFactors);
+            //return model;
         }
     }
 }

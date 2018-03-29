@@ -12,28 +12,28 @@ using Newtonsoft.Json;
 
 namespace Mathster.Controllers
 {
-    public class MultiplikationController : Controller
+    public class GameController : Controller
     {
 
         //MultiplikationIndexVM multiplikationIndexVM = new MultiplikationIndexVM();
         private readonly QuestionService questionService;
-        public MultiplikationController(QuestionService questionService)
+        public GameController(QuestionService questionService)
         {
             this.questionService = questionService;
         }
 
-        [Route("Multiplikation/{id}")]
-        public IActionResult Index(int id)
+        [Route("{gametype}/{level}")]
+        public IActionResult Index(Level level, GameType gameType)
         {
-            var model = questionService.GetMultiplicationIndexVM(id);
+            var model = questionService.GetMultiplicationIndexVM(level, gameType);
 
             return View(model);
         }
         [HttpPost]
-        [Route("Multiplikation/nyUppgift/{id}/{clickedAnswer}")]
-        public MultiplicationNewQuestionVM NewQuestion(int id, int? clickedAnswer)
+        [Route("{gametype}/nextquestion/{level}/{clickedAnswer}")]
+        public MultiplicationNewQuestionVM NewQuestion(Level level, int? clickedAnswer, GameType gameType)
         {
-            return questionService.GetNewQuestion(id, clickedAnswer, HttpContext);
+            return questionService.GetNewQuestion(level, clickedAnswer, HttpContext, gameType);
             
            
 

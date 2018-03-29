@@ -1,4 +1,4 @@
-﻿function loadPage(id) {
+﻿function loadPage(level, gameType) {
 
 
 
@@ -7,7 +7,7 @@
         return new Promise((resolve) => setTimeout(resolve, time));
     }
 
-    getQuestion(id, clickedResult);
+    getQuestion(level, gameType, clickedResult);
 
     $(".answer").click(function () {
         clickedResult = $(this).text();
@@ -23,7 +23,7 @@
                 $(".answer1").css("background-color", "#47826d");
                 $($(this)).css("background-color", bgColor);
 
-                getQuestion(id, clickedResult);
+                getQuestion(level, gameType, clickedResult);
             });
         }
         if ($(".answer2").text() == ($(".factor1").text() * $(".factor2").text())) {
@@ -32,7 +32,7 @@
                 $(".answer2").css("background-color", "#87b52d");
                 $($(this)).css("background-color", bgColor);
 
-                getQuestion(id, clickedResult);
+                getQuestion(level, gameType, clickedResult);
             });
         }
         if ($(".answer3").text() == ($(".factor1").text() * $(".factor2").text())) {
@@ -41,7 +41,7 @@
                 $(".answer3").css("background-color", "#60b394");
                 $($(this)).css("background-color", bgColor);
 
-                getQuestion(id, clickedResult);
+                getQuestion(level, gameType, clickedResult);
             });
         }
         if ($(".answer4").text() == ($(".factor1").text() * $(".factor2").text())) {
@@ -50,16 +50,16 @@
                 $(".answer4").css("background-color", "#a6d13d");
                 $($(this)).css("background-color", bgColor);
 
-                getQuestion(id, clickedResult);
+                getQuestion(level, gameType, clickedResult);
             });
         }
     });
 };
 
 
-function getQuestion(id, clickedResult) {
+function getQuestion(level, gameType, clickedResult) {
     $.ajax({
-        url: "/multiplikation/nyUppgift/" + id + "/" + clickedResult,
+        url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
         data: null,
         success: function (result) {

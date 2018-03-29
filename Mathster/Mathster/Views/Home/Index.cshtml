@@ -1,37 +1,38 @@
-﻿<div class="container">
+﻿@using Mathster.Models
+<div class="container">
     <div class="menuChoice" id="multiplication">
         <ul>
             <li>Multiplikation</li>
-            <li><a href="/multiplikation/1">Lätt</a></li>
-            <li><a href="/multiplikation/2">Medel</a></li>
-            <li><a href="/multiplikation/3">Svår</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)">Lätt</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)">Medel</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)">Svår</a></li>
         </ul>
     </div>
 
     <div class="menuChoice" id="division">
         <ul>
-            <li>Division</li>
-            <li><a href="/division/1">Lätt</a></li>
-            <li><a href="/division/2">Medel</a></li>
-            <li><a href="/division/3">Svår</a></li>
-        </ul>
+            <li>Division</li>                      
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)">Lätt</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)">Medel</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)">Svår</a></li>
+        </ul>                                                                 
     </div>
 
     <div class="menuChoice" id="addition">
         <ul>
-            <li>Addition</li>
-            <li><a href="/addition/1">Lätt</a></li>
-            <li><a href="/addition/2">Medel</a></li>
-            <li><a href="/addition/3">Svår</a></li>
-        </ul>
+            <li>Addition</li>                      
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)">Lätt</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)">Medel</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)">Svår</a></li>
+        </ul>                                                                 
     </div>
 
     <div class="menuChoice" id="subtraction">
         <ul>
-            <li>Subtraktion</li>
-            <li><a href="/subtraktion/1">Lätt</a></li>
-            <li><a href="/subtraktion/2">Medel</a></li>
-            <li><a href="/subtraktion/3">Svår</a></li>
+            <li>Subtraktion</li>                                           
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)">Lätt</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)">Medel</a></li>
+            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">Svår</a></li>
         </ul>
     </div>
     <div class="menuChoice" id="settings"></div>
