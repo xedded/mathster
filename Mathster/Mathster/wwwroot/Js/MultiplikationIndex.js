@@ -33,11 +33,15 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "green");
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult) {
-                        $(".answer").eq(i).css("background-color", "red");
+                        $(".answer").eq(i).fadeTo(500, 0);
                     }
                 }
+                $(".answer").eq(clickedResult);
+
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
+                    $(".answer").fadeTo(500, 1);
+                    
                 });
             }
             else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null) {
@@ -48,12 +52,13 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult && i != result.previousCorrectAnswerIndex) {
-                        $(".answer").eq(i).css("background-color", "pink");
+                        $(".answer").eq(i).fadeTo(500, 0);
                     }
                 }
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", backgColor);
                     $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", backgroundColor);
+                    $(".answer").fadeTo(500, 1);
                 });
             }
 
@@ -63,7 +68,7 @@ function getQuestion(level, gameType, clickedResult) {
 
             if (result.questionIndex < result.questionTotal) {
 
-                sleep(1000).then(() => {
+                sleep(2000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
                     clickedResult == result.previousCorrectAnswerIndex
                     $("#factor1").text(result.factors[0]);
