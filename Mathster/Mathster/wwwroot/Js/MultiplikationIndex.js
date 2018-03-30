@@ -1,14 +1,23 @@
-﻿function loadPage(level, gameType) {
-    
+﻿var canClick = true;
+
+function loadPage(level, gameType) {
+
     getQuestion(level, gameType);
     // skapa en variabel canclick, sätt den till false och sedan till true efter ajax
+
     $(".answer").click(function () {
-        clickedResult = $(".answer").index(this);
-        getQuestion(level, gameType, clickedResult);
+        if (canClick) {
+            canClick = false;
+            clickedResult = $(".answer").index(this);
+            getQuestion(level, gameType, clickedResult);
+        }
     });
+
 };
 
+
 function getQuestion(level, gameType, clickedResult) {
+
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
@@ -55,6 +64,7 @@ function getQuestion(level, gameType, clickedResult) {
                     }
 
                     $("#containerDiv").css("visibility", "visible");
+                    canClick = true;
                 });
             }
             else {
