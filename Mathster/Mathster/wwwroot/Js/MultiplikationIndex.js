@@ -31,6 +31,11 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
+                for (var i = 0; i < 4; i++) {
+                    if (i != clickedResult) {
+                        $(".answer").eq(i).css("background-color", "red");
+                    }
+                }
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
                 });
@@ -41,11 +46,20 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "red");
                 var backgroundColor = $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color");
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
+                for (var i = 0; i < 4; i++) {
+                    if (i != clickedResult && i != result.previousCorrectAnswerIndex) {
+                        $(".answer").eq(i).css("background-color", "pink");
+                    }
+                }
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", backgColor);
                     $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", backgroundColor);
                 });
             }
+
+            //if (clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[0] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[1] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[2] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[3] ) {
+            //    $(".answer").eq().css("background-color", "lime");
+            //}
 
             if (result.questionIndex < result.questionTotal) {
 
