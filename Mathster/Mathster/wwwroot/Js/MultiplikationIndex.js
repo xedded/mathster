@@ -66,7 +66,7 @@ function getQuestion(level, gameType, clickedResult) {
             //    $(".answer").eq().css("background-color", "lime");
             //}
 
-            if (result.questionIndex < result.questionTotal) {
+            if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
@@ -87,9 +87,13 @@ function getQuestion(level, gameType, clickedResult) {
                 });
             }
             else {
-                $("#containerDiv").css("display", "none");
+                sleep(1000).then(() => {
+                    $("#containerDiv").css("display", "none");
+                    $("#resultDiv").text("Klar");
 
-                $("#resultDiv").css("display", "block");
+                    $("#resultDiv").css("display", "block");
+
+                });
 
             }
         }
