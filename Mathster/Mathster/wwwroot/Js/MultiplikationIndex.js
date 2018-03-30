@@ -1,7 +1,7 @@
 ﻿function loadPage(level, gameType) {
     
     getQuestion(level, gameType);
-
+    // skapa en variabel canclick, sätt den till false och sedan till true efter ajax
     $(".answer").click(function () {
         clickedResult = $(".answer").index(this);
         getQuestion(level, gameType, clickedResult);
