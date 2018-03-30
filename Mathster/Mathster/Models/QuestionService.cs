@@ -18,30 +18,30 @@ namespace Mathster.Models
 
         //    return countList;
         //}
-        SubtractionIndexVM SubtractionRandomizer(int id)
+        GameNewQuestionVM SubtractionRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
             int c = 0;
             int d = 0;
 
-            switch (id)
+            switch (level)
             {
-                case 1:
+                case Level.Easy:
                     a = 5;
                     b = 21;
                     c = 0;
                     d = 11;
                     break;
 
-                case 2:
+                case Level.Medium:
                     a = 10;
                     b = 85;
                     c = 1;
                     d = 11;
                     break;
 
-                case 3:
+                case Level.Hard:
                     a = 30;
                     b = 100;
                     c = 10;
@@ -96,15 +96,14 @@ namespace Mathster.Models
             List<int> sortedList = list.OrderBy(v => v).ToList();
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
-
-            SubtractionIndexVM subtractionIndexVM = new SubtractionIndexVM
+            GameNewQuestionVM gameNewQuestion = new GameNewQuestionVM
             {
-                CorrectAnswer = product,
-                SubtractionFactors = arrayProduct,
-                ResultOptions = arrayFakeNumbers
+                Factors = arrayProduct,
+                ResultOptions = arrayFakeNumbers,
+                QuestionTotal = 20,
 
             };
-            return subtractionIndexVM;
+            return gameNewQuestion;
         }
         public MultiplicationIndexVM GetMultiplicationIndexVM(Level level, GameType gameType)
         {
@@ -276,8 +275,8 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                PreviousCorrectAnswerIndex = null,
-                QuestionIndex = 1,
+                
+               
                 QuestionTotal = 20,
 
             };
@@ -286,30 +285,30 @@ namespace Mathster.Models
 
 
         //Addition
-        AdditionIndexVM AdditionRandomizer(int id)
+        GameNewQuestionVM AdditionRandomizer(Level level)
         {
             int a = 0;
             int b = 0;
             int c = 0;
             int d = 0;
 
-            switch (id)
+            switch (level)
             {
-                case 1:
+                case Level.Easy:
                     a = 1;
                     b = 10;
                     c = 0;
                     d = 11;
                     break;
 
-                case 2:
+                case Level.Medium:
                     a = 10;
                     b = 85;
                     c = 1;
                     d = 11;
                     break;
 
-                case 3:
+                case Level.Hard:
                     a = 30;
                     b = 100;
                     c = 10;
@@ -359,14 +358,15 @@ namespace Mathster.Models
             int[] arrayFakeNumbers = sortedList.ToArray();
             //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
 
-            AdditionIndexVM additionIndexVM = new AdditionIndexVM
+            GameNewQuestionVM gameNewQuestionVM = new GameNewQuestionVM
             {
-                AddedNumbers = arraySum,
+                Factors = arraySum,
                 ResultOptions = arrayFakeNumbers,
-                CorrectAnswer = sum,
-
+                
+                
+                QuestionTotal = 20,
             };
-            return additionIndexVM;
+            return gameNewQuestionVM;
 
         }
 
@@ -385,10 +385,10 @@ namespace Mathster.Models
 
             var correctPreviousIndex = httpContext.Session.GetInt32(correctPreviousIndexKey);
 
-            bool isAnswerCorrect = false;
+            //bool isAnswerCorrect = false;
             if (correctPreviousIndex == clickedIndex && correctPreviousIndex != null)
             {
-                isAnswerCorrect = true;
+                //isAnswerCorrect = true;
                 // Increase correctAnswerIndex
 
                 var correctAnswerCount = httpContext.Session.GetInt32(correctAnswerCountKey);
@@ -429,22 +429,22 @@ namespace Mathster.Models
                     return model;
 
                 case GameType.Addition:
-                    model = MultiplicationRandomizer(level);
+                    model = AdditionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 + factor2;
-                    httpContext.Session.SetInt32(correctPreviousIndexKey, resultOfFactors);
+                    httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
                     return model;
                 case GameType.Subtraction:
-                    model = MultiplicationRandomizer(level);
+                    model = SubtractionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 - factor2;
-                    httpContext.Session.SetInt32(correctPreviousIndexKey, resultOfFactors);
+                    httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
                     return model;
 
                 default:
