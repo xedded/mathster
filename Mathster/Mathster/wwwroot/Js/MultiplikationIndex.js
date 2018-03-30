@@ -68,7 +68,7 @@ function getQuestion(level, gameType, clickedResult) {
 
             if (result.questionIndex < result.questionTotal) {
 
-                sleep(2000).then(() => {
+                sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
                     clickedResult == result.previousCorrectAnswerIndex
                     $("#factor1").text(result.factors[0]);

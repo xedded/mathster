@@ -1,19 +1,9 @@
-﻿#questionIndex {
-    font-size: 100px;
-    font-size: 100px;
-    color: white;
-    padding: 7px;
-    padding-left: 13px;
-    padding-right: 13px;
-    text-shadow: 2px 2px 10px #000000;
-}
-.arrowAndInfo{
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;  
+﻿body {
+    background-image: url("/MathsterBackground.png");
+    background-size: cover;
 }
 
-.fa-arrow-left {
+#questionIndex {
     font-size: 100px;
     color: white;
     padding: 7px;
@@ -21,6 +11,20 @@
     padding-right: 13px;
     text-shadow: 2px 2px 10px #000000;
 }
+
+.arrowAndInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fa-reply {
+    font-size: 100px;
+    color: white;
+    padding: 18px;
+    text-shadow: 2px 2px 10px #000000;
+}
+
 .backDiv {
     border: solid;
     border-color: white;
@@ -70,7 +74,7 @@
     justify-content: space-around;
     align-items: center;
     padding: 50px;
-    padding-top:0px;
+    padding-top: 0px;
     height: 400px;
 }
 
