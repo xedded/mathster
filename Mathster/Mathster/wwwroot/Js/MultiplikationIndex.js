@@ -47,7 +47,7 @@ function getQuestion(level, gameType, clickedResult) {
                 });
             }
 
-            if (result.questionIndex < 5) {
+            if (result.questionIndex < result.questionTotal) {
 
                 sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);

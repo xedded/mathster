@@ -30,7 +30,7 @@ namespace Mathster.Controllers
             return View(model);
         }
         [HttpPost]
-        [Route("{gametype}/nextquestion/{level}/{clickedAnswer}")]
+        [Route("{gametype}/nextquestion/{level}/{clickedIndex}")]
         public GameNewQuestionVM NewQuestion(Level level, int? clickedIndex, GameType gameType)
         {
             return questionService.GetNewQuestion(level, clickedIndex, HttpContext, gameType);
