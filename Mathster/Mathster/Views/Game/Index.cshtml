@@ -1,15 +1,11 @@
 ﻿@model MultiplicationIndexVM
 
-<div class="backDiv"><a asp-controller="Home" asp-action="Index"><h1 class="backArrow">&#8592;</h1></a></div>
-<div id="resultDiv">
-    <h3 id="feedback"></h3>
-    <h2 id="result"></h2>
-    <p id="link"></p>
-</div>
-
 
 <div class="container" id="containerDiv" style="visibility:hidden">
-    <div id="questionIndex"></div>
+    <div class="arrowAndInfo">
+        <div class="backDiv"><a asp-controller="Home" asp-action="Index"><i class="fas fa-arrow-left"></i></a></div>
+        <div id="questionIndex"></div>
+    </div>
         <div class="questionContainer">
         <div class="question" id="questionDiv">
             <div class="factor1" id="factor1"></div>
@@ -27,13 +23,12 @@
 </div>
 
 
-
-
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Js/MultiplikationIndex.js"></script>
 <link href="~/Scripts/Mathpages.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
 <script>
     $(document).ready(function () {
