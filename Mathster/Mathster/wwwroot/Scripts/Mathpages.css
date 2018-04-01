@@ -16,6 +16,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
 }
 
 .fa-reply {
@@ -38,25 +41,21 @@
     font-family: 'Trebuchet MS';
     font-size: 80px;
     color: white;
-    width: 80%;
+    width: 100%;
     align-items: center;
-    padding-top: 4%;
-    padding-left: 10%;
 }
 
 .questionContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 100%;
 }
 
 .question {
-    height: 100px;
+    height: 20%;
     background-color: #47826d;
     border-color: white;
-    padding: 15px;
-    border-radius: 0%;
+    padding: 1%;
     font-size: 100px;
     border: solid 7px;
     border-radius: 50px;
@@ -73,75 +72,131 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    padding: 50px;
-    padding-top: 0px;
-    height: 400px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 7%;
+    height: 40%;
 }
 
+    .answers div {
+        border: solid 7px;
+        border-color: white;
+        padding: 2%;
+        border-radius: 20%;
+        text-shadow: 2px 2px 10px #000000;
+        box-shadow: 4px 4px 20px #000000;
+        width: 8%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
 .answer1 {
-    border: solid 7px;
-    border-color: white;
-    padding: 20px;
-    border-radius: 20%;
     background-color: #47826d;
-    text-shadow: 2px 2px 10px #000000;
-    box-shadow: 4px 4px 20px #000000;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }
 
 .answer2 {
-    border: solid 7px;
-    border-color: white;
-    padding: 20px;
-    border-radius: 20%;
     background-color: #87b52d;
-    text-shadow: 2px 2px 10px #000000;
-    box-shadow: 4px 4px 20px #000000;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }
 
 .answer3 {
-    border: solid 7px;
-    border-color: white;
-    padding: 20px;
-    border-radius: 20%;
     background-color: #60b394;
-    text-shadow: 2px 2px 10px #000000;
-    box-shadow: 4px 4px 20px #000000;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }
 
 .answer4 {
-    border: solid 7px;
-    border-color: white;
-    padding: 20px;
-    border-radius: 20%;
     background-color: #a6d13d;
-    text-shadow: 2px 2px 10px #000000;
-    box-shadow: 4px 4px 20px #000000;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
 }
 
 .correctAnswer {
     display: none;
+}
+
+@media only screen and (max-device-width : 800px) {
+    body {
+        background-size:330%;
+    }
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding:0;
+        margin:0;
+        height:600px;
+    }
+
+    .arrowAndInfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+        height: 10%;
+        padding: 0;
+        margin: 0;
+        width:80%;
+    }
+
+    .fa-reply {
+        font-size: 70px;
+        padding: 0;
+        margin: 0;
+        width:50%;
+        display:flex;
+        justify-content:flex-start;
+    }
+
+    .backDiv {
+        border: none;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        width:50%;
+    }
+
+    .questionContainer {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 18%;
+    }
+
+    #questionIndex {
+        padding: 0;
+        margin: 0;
+        font-size: 50px;
+        height: auto;
+    }
+
+    .question {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        border-radius:0;
+    }
+
+    .answers {
+        height: 35%;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        justify-content:space-between;
+    }
+
+        .answers div {
+            width: 45%;
+            height: 45%;
+            margin: 0;
+            padding: 0;
+            border-radius: 0;
+            margin-top:2%;
+        }
 }
