@@ -78,6 +78,7 @@ function getQuestion(level, gameType, clickedResult) {
                     }
 
                     $("#containerDiv").css("visibility", "visible");
+                    $("#test").css("display", "none");
                     canClick = true;
                 });
             }
@@ -85,6 +86,10 @@ function getQuestion(level, gameType, clickedResult) {
                 $("#containerDiv").css("display", "none");
 
                 $("#resultDiv").css("display", "block");
+                $("#test").css("visibility", "visible");
+                $("#test").text("Du hade " + result.correctAnswers + " av " + result.questionTotal);
+                
+                
 
             }
         }
