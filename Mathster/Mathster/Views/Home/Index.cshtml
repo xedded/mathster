@@ -44,7 +44,15 @@
     </div>
     <div class="row">
         <div class="menuChoice" id="settings"><i class="fas fa-cog"></i></div>
-        <div class="menuChoice" id="videos"><i class="fas fa-video"></i></div>
+        <div class="menuChoice wrapper" id="instructionVideo">
+            <i class="fas fa-video"></i>
+            <ul id="videoList">
+                <li><a class="addition" asp-controller="Video" asp-route-gametype="@nameof(GameType.Addition)">Addition</a></li>
+                <li><a class="subtraction" asp-controller="Video" asp-route-gametype="@nameof(GameType.Subtraction)">Subtraktion</a></li>
+                <li><a class="multiplication" asp-controller="Video" asp-route-gametype="@nameof(GameType.Multiplication)">Multiplikation</a></li>
+                <li><a class="division" asp-controller="Video" asp-route-gametype="@nameof(GameType.Division)">Division</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

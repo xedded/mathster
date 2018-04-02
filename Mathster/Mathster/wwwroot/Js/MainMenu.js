@@ -42,6 +42,15 @@
             $('#minusList').css('display', 'none')
         }
     );
+    $('#instructionVideo').hover(function () {
+        $('.fa-video').css('display', 'none')
+        $('#videoList').css('display', 'block')
+    },
+        function () {
+            $('.fa-video').css('display', 'block')
+            $('#videoList').css('display', 'none')
+        }
+    );
 
     
     $("#mathster").In(500);
