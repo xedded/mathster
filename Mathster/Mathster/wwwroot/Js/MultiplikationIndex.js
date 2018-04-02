@@ -90,7 +90,7 @@ function getQuestion(level, gameType, clickedResult) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
-                    $("#resultDiv").text("Klar");
+                    $("#resultDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
 
                 $("#resultDiv").css("display", "block");
 
