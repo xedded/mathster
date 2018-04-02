@@ -402,6 +402,7 @@ namespace Mathster.Models
                     model = MultiplicationRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
+                    model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
                     var factor1 = model.Factors[0];
                     var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
@@ -413,6 +414,8 @@ namespace Mathster.Models
                     model = DivisionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
+                    model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
+
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 / factor2;
@@ -425,6 +428,8 @@ namespace Mathster.Models
                     model = AdditionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
+                    model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
+
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 + factor2;
@@ -434,6 +439,8 @@ namespace Mathster.Models
                     model = SubtractionRandomizer(level);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
+                    model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
+
                     factor1 = model.Factors[0];
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 - factor2;

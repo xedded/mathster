@@ -83,15 +83,16 @@ function getQuestion(level, gameType, clickedResult) {
                     }
 
                     $("#containerDiv").css("visibility", "visible");
+                    $("#test").css("display", "none");
                     canClick = true;
                 });
             }
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
-                    $("#resultDiv").text("Klar");
+                    $("#resultDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
 
-                    $("#resultDiv").css("display", "block");
+                $("#resultDiv").css("display", "block");
 
                 });
 
