@@ -31,6 +31,14 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
+
+                $("#feedback").css("display", "block");
+                var myArray = ["Bra Jobbat!", "Snyggt!", "Niiiiice!"];
+                var rand = myArray[Math.floor(Math.random() * myArray.length)];
+                console.log(rand);
+                $("#feedback").text(rand);
+
+
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult) {
                         $(".answer").eq(i).fadeTo(500, 0);
@@ -41,6 +49,7 @@ function getQuestion(level, gameType, clickedResult) {
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
                     $(".answer").fadeTo(500, 1);
+                    $("#feedback").css("display", "none");
                     
                 });
             }
