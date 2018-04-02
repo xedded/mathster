@@ -2,51 +2,50 @@
 
 
 <div class="container" id="container">
-    <div class="mathster slide-left" id="mathster">MATHSTER</div>
+    <div class="mathster slide-left" id="mathster"></div>
     <div class="row">
 
-
-        <div class="menuChoice wrapper" id="multiplication">
-            <i class="fas fa-times"></i>
-            <ul id="multiList">
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)">LÄTT</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)">MEDEL</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)">SVÅR</a></li>
-            </ul>
-        </div>
-
-        <div class="menuChoice wrapper" id="division">
-            <i class="fas fa-bug"></i>
-            <ul id="divList">
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)">LÄTT</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)">MEDEL</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)">SVÅR</a></li>
-            </ul>
-        </div>
 
         <div class="menuChoice wrapper" id="addition">
             <i class="fas fa-plus"></i>
             <ul id="plusList">
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)">LÄTT</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)">MEDEL</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)">SVÅR</a></li>
+                <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
+                <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
+                <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
             </ul>
         </div>
 
         <div class="menuChoice wrapper" id="subtraction">
             <i class="fas fa-minus"></i>
             <ul id="minusList">
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)">LÄTT</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)">MEDEL</a></li>
-                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">SVÅR</a></li>
+                <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
+                <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
+                <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
             </ul>
         </div>
+        <div class="menuChoice wrapper" id="multiplication">
+            <i class="fas fa-times"></i>
+            <ul id="multiList">
+                <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
+                <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
+                <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
+            </ul>
+        </div>
+
+        <div class="menuChoice wrapper" id="division">
+            <i class="fas fa-bug"></i>
+            <ul id="divList">
+                <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
+                <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
+                <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
+            </ul>
+        </div>
+
     </div>
-    @*<div class="row">
-        <div class="menuChoice" id="settings"></div>
-        <div class="menuChoice" id="statistic"></div>
-        <div class="menuChoice" id="videos"></div>
-    </div>*@
+    <div class="row">
+        <div class="menuChoice" id="settings"><i class="fas fa-cog"></i></div>
+        <div class="menuChoice" id="videos"><i class="fas fa-video"></i></div>
+    </div>
 </div>
 
 

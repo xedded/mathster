@@ -1,6 +1,10 @@
 ﻿function loadPage() {
 
     $('ul').css("display", "none");
+    $('.easyA').text("LÄTT");
+    $('.mediumA').text("MEDEL");
+    $('.hardA').text("SVÅR");
+    $('.mathster').text("MATHSTER");
 
     $('#multiplication').hover(function () {
         $('.fa-times').css('display', 'none')
