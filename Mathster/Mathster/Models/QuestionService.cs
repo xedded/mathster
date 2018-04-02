@@ -10,14 +10,7 @@ namespace Mathster.Models
 {
     public class QuestionService
     {
-        //List<char> countList = new List<char>();
-        //public List<char> CorrectAnswersCounted()
-        //{
-        //    char letter = ;
-        //    countList.Add(letter);
-
-        //    return countList;
-        //}
+ 
         GameNewQuestionVM SubtractionRandomizer(Level level)
         {
             int a = 0;
@@ -53,7 +46,7 @@ namespace Mathster.Models
                     break;
             }
             Random rdm = new Random();
-            int number1 = rdm.Next(a, b);  //Ändrat
+            int number1 = rdm.Next(a, b);  
             int number2 = rdm.Next(c, d);
 
             int product = number1 - number2;
@@ -91,11 +84,11 @@ namespace Mathster.Models
 
             List<int> list = new List<int> { product, fakeNumber1, fakeNumber2, fakeNumber3 };
 
-            // Ändringar!!
+            
 
             List<int> sortedList = list.OrderBy(v => v).ToList();
             int[] arrayFakeNumbers = sortedList.ToArray();
-            //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
+           
             GameNewQuestionVM gameNewQuestion = new GameNewQuestionVM
             {
                 Factors = arrayProduct,
@@ -148,27 +141,27 @@ namespace Mathster.Models
 
 
             Random rdm = new Random();
-            int number1 = rdm.Next(a, b);  //Ändrat
+            int number1 = rdm.Next(a, b);  
             int number2 = rdm.Next(c, d);
 
             int product = number1 * number2;
             int[] arrayProduct = new int[2] { number1, number2 };
 
-            int rangeMin = product - 5;
+            int rangeMin = product - d;
             if (rangeMin < 0)
             {
                 rangeMin = 0;
             }
-            int rangeMax = product + 5;
+            int rangeMax = product + d;
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 == product)
+            while (fakeNumber1 == product|| fakeNumber1%number1!=0)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product)
+            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product || fakeNumber2%number2!=0)
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
@@ -180,11 +173,11 @@ namespace Mathster.Models
 
             List<int> list = new List<int> { product, fakeNumber1, fakeNumber2, fakeNumber3 };
 
-            // Ändringar!!
+          
 
             List<int> sortedList = list.OrderBy(v => v).ToList();
             int[] arrayFakeNumbers = sortedList.ToArray();
-            //int[] arrayFakeNumbers = new int[4] { product, fakeNumber1, fakeNumber2, fakeNumber3};
+          
 
 
 
@@ -239,16 +232,16 @@ namespace Mathster.Models
             int product = number1 * number2;
             int[] arrayProduct = new int[2] { product, number1 };
 
-            int rangeMin = number2 - 3;
+            int rangeMin = number2 - (b-a);
             if (rangeMin < 0)
             {
                 rangeMin = 0;
             }
-            int rangeMax = number2 + 3;
+            int rangeMax = number2 + (b-a);
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 == number2)
+            while (fakeNumber1 == number2||product%fakeNumber1!=0)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
