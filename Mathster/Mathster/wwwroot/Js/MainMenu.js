@@ -1,6 +1,10 @@
 ﻿function loadPage() {
 
     $('ul').css("display", "none");
+    $('.easyA').text("LÄTT");
+    $('.mediumA').text("MEDEL");
+    $('.hardA').text("SVÅR");
+    $('.mathster').text("MATHSTER");
 
     $('#multiplication').hover(function () {
         $('.--times').css('display', 'none')
@@ -38,6 +42,17 @@
             $('#minusList').css('display', 'none')
         }
     );
+    $('#instructionVideo').hover(function () {
+        $('.fa-video').css('display', 'none')
+        $('#videoList').css('display', 'block')
+    },
+        function () {
+            $('.fa-video').css('display', 'block')
+            $('#videoList').css('display', 'none')
+        }
+    );
+
+    
     $('#instructionVideo').hover(function () {
         $('.fa-video').css('display', 'none')
         $('#videoList').css('display', 'block')

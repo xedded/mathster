@@ -2,22 +2,16 @@
     background-image: url("/MathsterBackground.png");
     background-size: cover;
 }
-.mathster{
-    font-family:'Trebuchet MS';
-    color:white;
-    font-size:200px;
-    text-align:center;
+
+.mathster {
+    font-family: 'Trebuchet MS';
+    color: white;
+    font-size: 180px;
+    text-align: center;
 }
 
-.wrapper {
-    margin: 3em 0;
-}
 
 a, a:visited, a:hover, a:active {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    position: relative;
-    transition: 0.5s color ease;
     text-decoration: none;
     color: white;
     font-size: 2.5em;
@@ -28,52 +22,23 @@ a, a:visited, a:hover, a:active {
         color: #bdbdbd;
     }
 
-    a.before:before, a.after:after {
-        content: "";
-        transition: 0.5s all ease;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        position: absolute;
-    }
 
-    a.before:before {
-        top: -0.25em;
-    }
-
-    a.after:after {
-        bottom: -0.25em;
-    }
-
-    a.before:before, a.after:after {
-        height: 5px;
-        height: 0.35rem;
-        width: 0;
-        background: #bdbdbd;
-    }
-
-    a.third:after {
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-        transform: translateX(-50%);
-    }
-
-
-    a.before:hover:before, a.after:hover:after {
-        width: 100%;
-    }
-
-    
 
 .container {
-    width: 80%;
-    margin: 110px;
-    margin-left: 110px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+align-content:center;
+height:720px;
+margin:2%;
 }
 
 .row {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
 }
 
 .menuChoice {
@@ -81,22 +46,25 @@ a, a:visited, a:hover, a:active {
     justify-content: center;
     align-items: center;
     background-color: #47826d;
-    height: 200px;
-    width: 200px;
+    height: 40%;
+    width: 15%;
     border: solid;
     border-color: white;
     border-width: 10px;
     border-radius: 50px;
     text-align: center;
-    margin: 20px;
+    margin: 2%;
+    margin-bottom:0;
+    margin-top:0;
     box-shadow: 4px 4px 20px #000000;
-    }
+}
 
 .fas {
     font-size: 150px;
     color: white;
     text-shadow: 2px 2px 10px #000000;
 }
+
 ul {
     list-style: none;
     font-family: 'Trebuchet MS';
@@ -104,8 +72,95 @@ ul {
     font-size: 13px;
     padding-left: 0;
 }
-li{
-    padding:10px;
+
+li {
+    padding: 10px;
 }
+@media only screen and (max-device-width : 800px) {
+
+    body {
+        background-size: 330%;
+    }
+
+    .mathster {
+        display:flex;
+        justify-content:center;
+        align-content:center;
+        font-family: 'Trebuchet MS';
+        color: white;
+        font-size: 70px;
+        text-align: center;
+        height:15%;
+    }
 
 
+    a, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: white;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 10px #000000;
+    }
+
+        a:hover {
+            color: #bdbdbd;
+        }
+
+
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        height: 600px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 80%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menuChoice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #47826d;
+        height: 30%;
+        width: 40%;
+        border: solid;
+        border-color: white;
+        border-radius:0;
+        border-width: 7px;
+        padding:0;
+        margin:2%;
+        text-align: center;
+        box-shadow: 4px 4px 20px #000000;
+    }
+
+    .fas {
+        font-size: 100px;
+        color: white;
+        text-shadow: 2px 2px 10px #000000;
+    }
+
+    ul {
+        list-style: none;
+        font-family: 'Trebuchet MS';
+        color: white;
+        font-size: 13px;
+        padding-left: 0;
+    }
+
+    li {
+        padding: 10px;
+    }
+
+
+
+
+}

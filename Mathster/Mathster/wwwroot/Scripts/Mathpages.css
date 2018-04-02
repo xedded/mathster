@@ -27,6 +27,12 @@
     padding: 18px;
     text-shadow: 2px 2px 10px #000000;
 }
+#feedback {
+    text-shadow: 2px 2px 10px #000000;
+    display:flex;
+    align-content:center;
+    justify-content:center;
+}
 
 .backDiv {
     border: solid;
@@ -113,6 +119,7 @@
     display: none;
 }
 
+
 @media only screen and (max-device-width : 800px) {
     body {
         background-size:330%;
@@ -132,7 +139,7 @@
     .arrowAndInfo {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items:center;
         height: 10%;
         padding: 0;
@@ -147,6 +154,10 @@
         width:50%;
         display:flex;
         justify-content:flex-start;
+    }
+    #feedback{
+        font-size:60px;
+        text-align:center;
     }
 
     .backDiv {

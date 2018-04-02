@@ -3,17 +3,17 @@
 <div id="resultDiv"></div>
 <div class="container" id="containerDiv" style="visibility:hidden">
     <div class="arrowAndInfo">
-        <div class="backDiv"><a asp-controller="Home" asp-action="Index"><i class="fas fa-reply"></i></a></div>
-        <div id="questionIndex"></div>
+        <div class="backDiv mobile"><a asp-controller="Home" asp-action="Index"><i class="fas fa-reply"></i></a></div>
+        <div id="feedback"></div>
+        <div class="mobile" id="questionIndex"></div>
     </div>
-        <div class="questionContainer">
+    <div class="questionContainer">
         <div class="question" id="questionDiv">
             <div class="factor1" id="factor1"></div>
             <div id="x"></div>
             <div class="factor2" id="factor2"></div>
         </div>
     </div>
-    <div id="feedback"></div>
     <div class="answers">
         <div class="answer1 answer" id="answerDiv1"></div>
         <div class="answer2 answer" id="answerDiv2"></div>
@@ -33,7 +33,7 @@
 <script>
     $(document).ready(function () {
         $("#resultDiv").css("display", "none");
-        
+
 
         loadPage("@Model.Level","@Model.GameType");
     });

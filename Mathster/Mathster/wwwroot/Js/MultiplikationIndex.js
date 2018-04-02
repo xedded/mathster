@@ -33,6 +33,7 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "green");
 
                 $("#feedback").css("display", "block");
+                $(".mobile").css("display", "none");
                 var myArray = ["Bra Jobbat!", "Snyggt!", "Niiiiice!"];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 console.log(rand);
@@ -50,6 +51,8 @@ function getQuestion(level, gameType, clickedResult) {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
                     $(".answer").fadeTo(500, 1);
                     $("#feedback").css("display", "none");
+                    $(".mobile").css("display", "block");
+
                     
                 });
             }

@@ -17,6 +17,7 @@ namespace Mathster
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<QuestionService>();
+            services.AddTransient<VideoRepository>();
             services.AddSession();
             services.AddMvc();
         }
