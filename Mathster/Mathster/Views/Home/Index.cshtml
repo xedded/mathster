@@ -41,6 +41,14 @@
                 <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">SVÅR</a></li>
             </ul>
         </div>
+        <div class="menuChoice wrapper" id="instructionVideo">
+            <i class="fas fa-video"></i>
+            <ul id="videoList">
+                <li><a class="third after" href="MultiplicationVideo.html">MULTIPLIKATION</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)">MEDEL</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">SVÅR</a></li>
+            </ul>
+        </div>
     </div>
     @*<div class="row">
         <div class="menuChoice" id="settings"></div>
@@ -48,6 +56,8 @@
         <div class="menuChoice" id="videos"></div>
     </div>*@
 </div>
+
+
 
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
