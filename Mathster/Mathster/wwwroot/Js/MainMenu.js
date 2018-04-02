@@ -7,7 +7,7 @@
     $('.mathster').text("MATHSTER");
 
     $('#multiplication').hover(function () {
-        $('.--times').css('display', 'none')
+        $('.fa-times').css('display', 'none')
         $('#multiList').css('display', 'block')
     },
         function () {
