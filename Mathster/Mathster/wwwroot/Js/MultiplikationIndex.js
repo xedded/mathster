@@ -33,11 +33,15 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "green");
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult) {
-                        $(".answer").eq(i).css("background-color", "red");
+                        $(".answer").eq(i).fadeTo(500, 0);
                     }
                 }
+                $(".answer").eq(clickedResult);
+
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
+                    $(".answer").fadeTo(500, 1);
+                    
                 });
             }
             else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null) {
@@ -48,12 +52,13 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult && i != result.previousCorrectAnswerIndex) {
-                        $(".answer").eq(i).css("background-color", "pink");
+                        $(".answer").eq(i).fadeTo(500, 0);
                     }
                 }
                 sleep(1000).then(() => {
                     $(".answer").eq(clickedResult).css("background-color", backgColor);
                     $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", backgroundColor);
+                    $(".answer").fadeTo(500, 1);
                 });
             }
 
@@ -61,7 +66,7 @@ function getQuestion(level, gameType, clickedResult) {
             //    $(".answer").eq().css("background-color", "lime");
             //}
 
-            if (result.questionIndex < result.questionTotal) {
+            if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
@@ -83,13 +88,13 @@ function getQuestion(level, gameType, clickedResult) {
                 });
             }
             else {
-                $("#containerDiv").css("display", "none");
+                sleep(1000).then(() => {
+                    $("#containerDiv").css("display", "none");
+                    $("#resultDiv").text("Klar");
 
                 $("#resultDiv").css("display", "block");
-                $("#test").css("visibility", "visible");
-                $("#test").text("Du hade " + result.correctAnswers + " av " + result.questionTotal);
-                
-                
+
+                });
 
             }
         }

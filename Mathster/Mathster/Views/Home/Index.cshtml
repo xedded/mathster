@@ -1,46 +1,64 @@
 ﻿@using Mathster.Models
-<div class="container">
-    <div class="menuChoice" id="multiplication">
-        <ul>
-            <li>Multiplikation</li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)">Lätt</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)">Medel</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)">Svår</a></li>
-        </ul>
-    </div>
 
-    <div class="menuChoice" id="division">
-        <ul>
-            <li>Division</li>                      
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)">Lätt</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)">Medel</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)">Svår</a></li>
-        </ul>                                                                 
-    </div>
 
-    <div class="menuChoice" id="addition">
-        <ul>
-            <li>Addition</li>                      
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)">Lätt</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)">Medel</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)">Svår</a></li>
-        </ul>                                                                 
-    </div>
+<div class="container" id="container">
+    <div class="mathster slide-left" id="mathster">MATHSTER</div>
+    <div class="row">
 
-    <div class="menuChoice" id="subtraction">
-        <ul>
-            <li>Subtraktion</li>                                           
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)">Lätt</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)">Medel</a></li>
-            <li><a asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">Svår</a></li>
-        </ul>
+
+        <div class="menuChoice wrapper" id="multiplication">
+            <i class="fas fa-times"></i>
+            <ul id="multiList">
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)">LÄTT</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)">MEDEL</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)">SVÅR</a></li>
+            </ul>
+        </div>
+
+        <div class="menuChoice wrapper" id="division">
+            <i class="fas fa-bug"></i>
+            <ul id="divList">
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)">LÄTT</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)">MEDEL</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)">SVÅR</a></li>
+            </ul>
+        </div>
+
+        <div class="menuChoice wrapper" id="addition">
+            <i class="fas fa-plus"></i>
+            <ul id="plusList">
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)">LÄTT</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)">MEDEL</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)">SVÅR</a></li>
+            </ul>
+        </div>
+
+        <div class="menuChoice wrapper" id="subtraction">
+            <i class="fas fa-minus"></i>
+            <ul id="minusList">
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)">LÄTT</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)">MEDEL</a></li>
+                <li><a class="third after" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)">SVÅR</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="menuChoice" id="settings"></div>
-    <div class="menuChoice" id="statistic"></div>
-    <div class="menuChoice" id="videos"></div>
+    @*<div class="row">
+        <div class="menuChoice" id="settings"></div>
+        <div class="menuChoice" id="statistic"></div>
+        <div class="menuChoice" id="videos"></div>
+    </div>*@
 </div>
 
 
-
-
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Js/MainMenu.js"></script>
 <link href="~/Scripts/StartPage.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+
+<script>
+    $(document).ready(function () {
+        loadPage();
+    });
+</script>

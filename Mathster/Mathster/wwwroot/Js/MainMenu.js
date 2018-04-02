@@ -1,0 +1,47 @@
+﻿function loadPage() {
+
+    $('ul').css("display", "none");
+
+    $('#multiplication').hover(function () {
+        $('.fa-times').css('display', 'none')
+        $('#multiList').css('display', 'block')
+    },
+        function () {
+            $('.fa-times').css('display', 'block')
+            $('#multiList').css('display', 'none')
+        }
+    );
+    $('#division').hover(function () {
+        $('.fa-bug').css('display', 'none')
+        $('#divList').css('display', 'block')
+    },
+        function () {
+            $('.fa-bug').css('display', 'block')
+            $('#divList').css('display', 'none')
+        }
+    );
+    $('#addition').hover(function () {
+        $('.fa-plus').css('display', 'none')
+        $('#plusList').css('display', 'block')
+    },
+        function () {
+            $('.fa-plus').css('display', 'block')
+            $('#plusList').css('display', 'none')
+        }
+    );
+    $('#subtraction').hover(function () {
+        $('.fa-minus').css('display', 'none')
+        $('#minusList').css('display', 'block')
+    },
+        function () {
+            $('.fa-minus').css('display', 'block')
+            $('#minusList').css('display', 'none')
+        }
+    );
+
+    
+    $("#mathster").In(500);
+
+
+
+};
