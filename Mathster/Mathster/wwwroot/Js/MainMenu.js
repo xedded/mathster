@@ -5,9 +5,14 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     $('.mathster').text("MATHSTER");
+    $('.multiplication').text("Multiplikation");
+    $('.division').text("Division");
+    $('.addition').text("Addition");
+    $('.subtraction').text("Subtraktion");
+
 
     $('#multiplication').hover(function () {
-        $('.--times').css('display', 'none')
+        $('.fa-times').css('display', 'none')
         $('#multiList').css('display', 'block')
     },
         function () {
