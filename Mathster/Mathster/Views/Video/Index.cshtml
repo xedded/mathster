@@ -5,16 +5,20 @@
     <title>fu</title>
 </head>
 <body>
-    <div class="arrowAndInfo">
-        <div class="backDiv mobile"><a asp-controller="Home" asp-action="Index"><i class="fas fa-reply"></i></a></div>  
+    <div class="container">
+        <div id="navDiv">
+            <div class="backDiv mobile"><a asp-controller="Home" asp-action="Index"><i class="fas fa-reply"></i></a></div>
+            <div><h1>Instruktionsvideo</h1></div>
+            <div></div>
+        </div>
+        <div id="videoDiv"><iframe width="1120" height="630" src="@Model.MultiplicationVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
     </div>
-    <div><iframe width="1120" height="630" src="@Model.MultiplicationVideo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-    
+
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/MainMenu.js"></script>
-    <link href="~/Scripts/StartPage.css" rel="stylesheet" />
+    <link href="~/Scripts/VideoPage.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
 </body>

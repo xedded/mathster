@@ -5,6 +5,8 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     $('.mathster').text("MATHSTER");
+    $('.slash').append("<h1>/</h1>");
+
     $('.multiplication').text("Multiplikation");
     $('.division').text("Division");
     $('.addition').text("Addition");
@@ -21,11 +23,11 @@
         }
     );
     $('#division').hover(function () {
-        $('.fa-bug').css('display', 'none')
+        $('.slash').css('display', 'none')
         $('#divList').css('display', 'block')
     },
         function () {
-            $('.fa-bug').css('display', 'block')
+            $('.slash').css('display', 'block')
             $('#divList').css('display', 'none')
         }
     );
@@ -57,17 +59,7 @@
         }
     );
 
-    
-    $('#instructionVideo').hover(function () {
-        $('.fa-video').css('display', 'none')
-        $('#videoList').css('display', 'block')
-    },
-        function () {
-            $('.fa-video').css('display', 'block')
-            $('#videoList').css('display', 'none')
-        }
-    );
-    
+
 
 
 
