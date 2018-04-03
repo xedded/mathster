@@ -48,7 +48,7 @@ function getQuestion(level, gameType, clickedResult) {
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
                 //audio.play();
-                
+
                 $.playSound('https://www.soundjay.com/button/sounds/button-1.mp3')
 
 
@@ -134,7 +134,7 @@ function getQuestion(level, gameType, clickedResult) {
                     $(".starSpan").append("<i class='fas fa-star star3'></i>");
                     $(".starSpan").append("<i class='fas fa-star star4'></i>");
 
-                        //$(".fa-star").addClass("star" + [i]);
+                    //$(".fa-star").addClass("star" + [i]);
 
                     //}
 
@@ -143,56 +143,98 @@ function getQuestion(level, gameType, clickedResult) {
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-                        
-                        if (result.correctAnswers == result.questionTotal) {
-                            var i = 0;                    
 
-                            function myLoop() {          
-                                setTimeout(function () {    
+                        if (result.correctAnswers == result.questionTotal) {
+                            var i = 0;
+
+                            function myLoop() {
+                                setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
                                     $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    i++;                     
-                                    if (i < 5) {            
-                                        myLoop();             
-                                    }                        
+                                    i++;
+                                    if (i < 5) {
+                                        myLoop();
+                                    }
                                 }, 500)
                             }
-                            myLoop();   
-                               
+                            myLoop();
 
-                            //for (var i = 0; i < 5; i++) {
-                            //    $(".star" + [i]).css("color", "gold");
-                                
-
-                            //    //.wait(300)
-
-                            //}
-                    
                         }
-                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal*0.8))
-                        //    for (var i = 0; i < 4; i++) {
+                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.8)) {
+                            var i = 0;
 
-                        //        $(".star" + [i]).addClass("golden");
-                        //    }
-                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6))
-                        //    for (var i = 0; i < 3; i++) {
+                            function myLoop() {
+                                setTimeout(function () {
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;
+                                    if (i < 4) {
+                                        myLoop();
+                                    }
+                                }, 500)
+                            }
+                            myLoop();
+                        }
+                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6)) {
+                            var i = 0;
 
-                        //        $(".star" + [i]).addClass("golden");
-                        //    }
-                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4))
-                        //    for (var i = 0; i < 2; i++) {
+                            function myLoop() {
+                                setTimeout(function () {
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;
+                                    if (i < 3) {
+                                        myLoop();
+                                    }
+                                }, 500)
+                            }
+                            myLoop();
+                        }
+                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4)) {
+                            var i = 0;
 
-                        //        $(".star" + [i]).addClass("golden");
-                        //    }
-                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2))
-                        //    for (var i = 0; i < 1; i++) {
+                            function myLoop() {
+                                setTimeout(function () {
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;
+                                    if (i < 2) {
+                                        myLoop();
+                                    }
+                                }, 500)
+                            }
+                            myLoop();
+                        }
+                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2)) {
+                            var i = 0;
 
-                        //        $(".star" + [i]).addClass("golden");
-                        //    }
-                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0))
-                        //    for (var i = 0; i < 1; i++) {
+                            function myLoop() {
+                                setTimeout(function () {
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;
+                                    if (i < 1) {
+                                        myLoop();
+                                    }
+                                }, 500)
+                            }
+                            myLoop();
+                        }
+                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0)) {
+                            var i = 0;
 
-                        //    }
+                            function myLoop() {
+                                setTimeout(function () {
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;
+                                    if (i < 0) {
+                                        myLoop();
+                                    }
+                                }, 500)
+                            }
+                            myLoop();
+                        }
                     });
 
 
