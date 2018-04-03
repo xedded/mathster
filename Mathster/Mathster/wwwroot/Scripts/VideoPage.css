@@ -4,28 +4,27 @@
     background-size: cover;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    align-content:center;
-    justify-content: space-around;
+    
+    font-family: 'Trebuchet MS';
+    
+    color: white;
+    width: 100%;
+    align-items: center;
 }
 .fa-reply {
-    /*display:flex;
-    align-content: flex-start;
-    justify-content: flex-start;*/
-    
-    font-size: 100px;
+    font-size: 95px;
     color: white;
-    padding: 30px;
+    padding: 18px;
     text-shadow: 2px 2px 10px #000000;
+    padding-top:0px;
+    padding-left:8px;
 }
 #navDiv {
     display: flex;
-    flex-direction: row;
-    align-content: flex-start;
-    justify-content: flex-start;
-    align-content: space-between;
-    justify-content: center;
+   
+   
+    justify-content: space-between;
+    
     font-size: 3em;
     color: white;
 }
@@ -35,4 +34,61 @@
     align-content:center;
     justify-content:center;
 }
+.backDiv {
+    
+    border: solid;
+    border-color: white;
+    border-width: 7px;
+    border-radius: 100%;
+    background-color: #47826d;
+    box-shadow: 4px 4px 20px #000000;
+    padding: 1%;
+    max-height:100px;
+    max-width:105px;
+}
+
+@media only screen and (max-device-width : 800px) {
+    body {
+        background-size: 1000%;
+    }
+    iframe {
+        display: flex;
+        align-items:center;
+        width:100%;
+        height:70%;
+        padding-left:8px;
+        
+    }
+    .backDiv {
+        border: none;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+    }
+    .fa-reply {
+        font-size: 65px;
+        color: white;
+        padding: 18px;
+        text-shadow: 2px 2px 10px #000000;
+        padding-top: 0px;
+        padding-left: 8px;
+    }
+    h1{
+        font-size:35px;
+    }
+   
+
+
+
+
+
+
+
+}
+    
+    
+   
+    
 
