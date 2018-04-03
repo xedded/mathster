@@ -17,8 +17,7 @@ namespace Mathster.Models
             int a = 0;
             int b = 0;
             int c = 0;
-            int d = 0;
-            
+                       
 
             switch (level)
             {
@@ -26,21 +25,21 @@ namespace Mathster.Models
                     a = 5;
                     b = 21;
                     c = 0;
-                    d = 11;
+                  
                     break;
 
                 case Level.Medium:
                     a = 10;
                     b = 85;
                     c = 1;
-                    d = 11;
+                 
                     break;
 
                 case Level.Hard:
                     a = 30;
                     b = 100;
                     c = 10;
-                    d = 21;
+                   
                     break;
 
 
@@ -53,13 +52,13 @@ namespace Mathster.Models
             {
                 number1 = rdm.Next(a, b);
             }
-            int number2 = rdm.Next(c, d);
+            int number2 = rdm.Next(c, number1);
 
             int product = number1 - number2;
             int[] arrayProduct = new int[2] { number1, number2 };
 
-            int rangeMin = product - 5;
-            int rangeMax = product + 5;
+            int rangeMin = product - a;
+            int rangeMax = product + a;
 
             if (number1 < number2)
             {
@@ -73,17 +72,17 @@ namespace Mathster.Models
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 >= product)
+            while (fakeNumber1 == product || fakeNumber1 > number1)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber2 == fakeNumber1 || fakeNumber2 >= product)
+            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product || fakeNumber2 > number1)
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber3 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 >= product)
+            while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == product||fakeNumber3>number1)
             {
                 fakeNumber3 = rdm.Next(rangeMin, rangeMax);
             }
@@ -293,9 +292,6 @@ namespace Mathster.Models
             };
             return gameNewQuestion;
         }
-
-
-        //Addition
         GameNewQuestionVM AdditionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
