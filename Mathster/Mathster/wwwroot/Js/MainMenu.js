@@ -59,6 +59,15 @@
             $('#videoList').css('display', 'none')
         }
     );
+    $('#settings').hover(function () {
+        $('.fa-cog').css('display', 'none')
+        $('#questions').css('display', 'block')
+    },
+        function () {
+            $('.fa-cog').css('display', 'block')
+            $('#questions').css('display', 'none')
+        }
+    );
 
 
 
