@@ -76,8 +76,11 @@ ul {
     list-style: none;
     font-family: 'Trebuchet MS';
     color: white;
-    font-size: 13px;
+    font-size: 1em;
     padding-left: 0;
+}
+#videoList {
+    font-size: 0.7em;
 }
 
 li {
@@ -92,8 +95,11 @@ img {
     box-shadow:none;
     padding-right:120px;
 }
+#questions {
+    font-size: 2em;
+    text-shadow: 2px 2px 10px #000000;
+}
 @media only screen and (max-device-width : 800px) {
-
     body {
         background-size: 330%;
     }
