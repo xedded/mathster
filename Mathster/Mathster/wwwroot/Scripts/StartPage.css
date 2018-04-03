@@ -8,6 +8,7 @@
     color: white;
     font-size: 180px;
     text-align: center;
+    text-shadow: 2px 2px 10px #000000;
 }
 
 
@@ -82,6 +83,15 @@ ul {
 li {
     padding: 10px;
 }
+img {
+    height: 200px;
+}
+#shark{
+    border:none;
+    background:none;
+    box-shadow:none;
+    padding-right:120px;
+}
 @media only screen and (max-device-width : 800px) {
 
     body {
@@ -91,12 +101,12 @@ li {
     .mathster {
         display:flex;
         justify-content:center;
-        align-content:center;
+        align-content:flex-start;
         font-family: 'Trebuchet MS';
         color: white;
-        font-size: 4.5em;
+        font-size: 4em;
         text-align: center;
-        height:15%;
+        height:10%;
     }
 
 
@@ -119,6 +129,7 @@ li {
         display: flex;
         flex-direction: column;
         align-content: center;
+        justify-content:center;
         height: 600px;
         padding: 0;
         margin: 0;
@@ -128,7 +139,7 @@ li {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        height: 80%;
+        height: 70%;
 
     }
 
@@ -138,8 +149,8 @@ li {
         justify-content: space-around;
         align-items: center;
         background-color: #47826d;
-        height: 30%;
-        width: 40%;
+        height: 25%;
+        width: 35%;
         border: solid;
         border-color: white;
         border-radius:0;
@@ -168,7 +179,13 @@ li {
     li {
     }
 
-
+    img {
+        height: 120px;
+        padding-left:120px;
+    }
+    .slash{
+        font-size:50px;
+    }
 
 
 }
