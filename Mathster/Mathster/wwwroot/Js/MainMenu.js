@@ -1,6 +1,7 @@
 ﻿function loadPage() {
 
     $('ul').css("display", "none");
+
     $('.easyA').text("LÄTT");
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");

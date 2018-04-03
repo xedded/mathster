@@ -10,13 +10,15 @@ namespace Mathster.Models
 {
     public class QuestionService
     {
- 
+        int numberOfQuestions = 5;
+
         GameNewQuestionVM SubtractionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
             int b = 0;
             int c = 0;
             int d = 0;
+            
 
             switch (level)
             {
@@ -97,7 +99,7 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                QuestionTotal = 20,
+                QuestionTotal = numberOfQuestions,
 
             };
             return gameNewQuestion;
@@ -197,7 +199,7 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                QuestionTotal = 20,
+                QuestionTotal = numberOfQuestions,
 
             };
             return gameNewQuestion;
@@ -284,7 +286,9 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                QuestionTotal = 20,
+                
+               
+                QuestionTotal = numberOfQuestions,
 
             };
             return gameNewQuestion;
@@ -375,7 +379,7 @@ namespace Mathster.Models
                 ResultOptions = arrayFakeNumbers,
                 
                 
-                QuestionTotal = 20,
+                QuestionTotal = numberOfQuestions,
             };
             return gameNewQuestionVM;
 
