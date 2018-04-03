@@ -32,8 +32,8 @@ function getQuestion(level, gameType, clickedResult) {
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
 
-                $("#feedback").css("display", "block");
-                $(".mobile").css("display", "none");
+                //$("#feedback").css("display", "block");
+                //$(".mobile").css("display", "none");
                 var myArray = ["Bra Jobbat!", "Snyggt!", "Niiiiice!"];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 console.log(rand);
@@ -53,7 +53,7 @@ function getQuestion(level, gameType, clickedResult) {
                     $("#feedback").css("display", "none");
                     $(".mobile").css("display", "block");
 
-                    
+
                 });
             }
             else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null) {
@@ -78,7 +78,7 @@ function getQuestion(level, gameType, clickedResult) {
             //    $(".answer").eq().css("background-color", "lime");
             //}
 
-            if (result.questionIndex <= result.questionTotal) {
+            if (result.questionIndex <= result.questionTotal) { // Kom ihåg att ändra till <= !!!
 
                 sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
@@ -102,9 +102,47 @@ function getQuestion(level, gameType, clickedResult) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
-                    $("#resultDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
+                    for (var i = 0; i < 5; i++) {
+                        $(".starSpan").append("<i class='fas fa-star'></i>");
+                        $(".fa-star").addClass("star" + [i]);
 
-                $("#resultDiv").css("display", "block");
+                    }
+
+                    $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
+
+                    $("#resultDiv").css("display", "block");
+
+                    sleep(1000).then(() => {
+
+                        if (result.correctAnswers == 20)
+
+                            for (var i = 0; i < 5; i++) {
+
+                                $(".star" + [i]).addClass("golden");
+                            }
+                        if (result.correctAnswers < 20 && result.correctAnswers >= 16)
+                            for (var i = 0; i < 4; i++) {
+
+                                $(".star" + [i]).addClass("golden");
+                            }
+                        if (result.correctAnswers < 16 && result.correctAnswers >= 10)
+                            for (var i = 0; i < 3; i++) {
+
+                                $(".star" + [i]).addClass("golden");
+                            }
+                        if (result.correctAnswers < 10 && result.correctAnswers >= 5)
+                            for (var i = 0; i < 2; i++) {
+
+                                $(".star" + [i]).addClass("golden");
+                            }
+                        if (result.correctAnswers < 5)
+                            for (var i = 0; i < 1; i++) {
+
+                                $(".star" + [i]).addClass("golden");
+                            }
+
+                    });
+
 
                 });
 

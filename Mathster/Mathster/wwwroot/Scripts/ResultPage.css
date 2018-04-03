@@ -1,0 +1,33 @@
+﻿#resultDiv{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-content:center;
+    
+}
+
+.starSpan {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+
+    width: 100%;
+}
+.scoreDiv {
+    display: flex;
+    align-content: center;
+    font-family: 'Trebuchet MS';
+    font-size: 5em;
+    color: white;
+    text-shadow: 2px 2px 10px #000000;
+}
+.fa-star {
+    color: lightgray;
+    font-size: 7em;
+    text-shadow: 2px 2px 10px #000000;
+}
+.golden {
+    color: gold;
+    font-size: 7em;
+    text-shadow: 2px 2px 10px #000000;
+}
