@@ -205,7 +205,7 @@ namespace Mathster.Models
                 case Level.Easy:
                     a = 2;
                     b = 6;
-                    c = 0;
+                    c = 1;
                     d = 11;
                     break;
 
@@ -243,7 +243,7 @@ namespace Mathster.Models
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 == number2||product%fakeNumber1!=0)
+            while (fakeNumber1 == number2)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
