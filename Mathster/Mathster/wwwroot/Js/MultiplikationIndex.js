@@ -21,26 +21,7 @@ function getQuestion(level, gameType, clickedResult) {
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
-    //function play() {
-    //    var audio = document.getElementById("audio");
-        
-    //}
-    //(function ($) {
-    //    $.extend({
-    //        playSound: function () {
-    //            return $(
-    //                '<audio class="sound-player" autoplay="autoplay" style="display:none;">'
-    //                + '<source src="' + arguments[0] + '" />'
-    //                + '<embed src="' + arguments[0] + '" hidden="true" autostart="true" loop="false"/>'
-    //                + '</audio>'
-    //            ).appendTo('body');
-    //        },
-    //        stopSound: function () {
-    //            $(".sound-player").remove();
-    //        }
-    //    });
-    //})(jQuery);
-
+   
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
@@ -58,7 +39,7 @@ function getQuestion(level, gameType, clickedResult) {
 
                 //$("#feedback").css("display", "block");
                 //$(".mobile").css("display", "none");
-                var myArray = ["Bra Jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
+                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 console.log(rand);
                 $("#feedback").css("display", "block");
@@ -138,16 +119,15 @@ function getQuestion(level, gameType, clickedResult) {
                     }
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
-
+                    $(".closeA").text("Stäng");
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-
                         if (result.correctAnswers == 20)
 
                             for (var i = 0; i < 5; i++) {
 
-                                $(".star" + [i]).addClass("golden");
+                                    $(".star" + [i]).addClass("golden");
                             }
                         if (result.correctAnswers < 20 && result.correctAnswers >= 16)
                             for (var i = 0; i < 4; i++) {
