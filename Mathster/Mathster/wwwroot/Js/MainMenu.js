@@ -62,7 +62,7 @@
             $('#videoList').css('display', 'none')
         }
     );
-    $("#mathster").In(500);
+    
 
 
 
