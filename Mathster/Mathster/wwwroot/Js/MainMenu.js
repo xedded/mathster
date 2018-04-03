@@ -5,6 +5,11 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     $('.mathster').text("MATHSTER");
+    $('.multiplication').text("Multiplikation");
+    $('.division').text("Division");
+    $('.addition').text("Addition");
+    $('.subtraction').text("Subtraktion");
+
 
     $('#multiplication').hover(function () {
         $('.fa-times').css('display', 'none')

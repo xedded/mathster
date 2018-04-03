@@ -156,12 +156,14 @@ namespace Mathster.Models
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber1 == product|| fakeNumber1%number1!=0)
+          
+            while (fakeNumber1 == product||fakeNumber1%number1!=0)
             {
                 fakeNumber1 = rdm.Next(rangeMin, rangeMax);
             }
             int fakeNumber2 = rdm.Next(rangeMin, rangeMax);
-            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product || fakeNumber2%number2!=0)
+          
+            while (fakeNumber2 == fakeNumber1 || fakeNumber2 == product || number2!=0&&fakeNumber2%number2!=0)
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
