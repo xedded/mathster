@@ -17,8 +17,7 @@ namespace Mathster.Models
             int a = 0;
             int b = 0;
             int c = 0;
-            int d = 0;
-            
+                       
 
             switch (level)
             {
@@ -26,21 +25,21 @@ namespace Mathster.Models
                     a = 5;
                     b = 21;
                     c = 0;
-                    d = 11;
+                  
                     break;
 
                 case Level.Medium:
                     a = 10;
                     b = 85;
                     c = 1;
-                    d = 11;
+                 
                     break;
 
                 case Level.Hard:
                     a = 30;
                     b = 100;
                     c = 10;
-                    d = 21;
+                   
                     break;
 
 
@@ -293,9 +292,6 @@ namespace Mathster.Models
             };
             return gameNewQuestion;
         }
-
-
-        //Addition
         GameNewQuestionVM AdditionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
