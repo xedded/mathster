@@ -21,6 +21,26 @@ function getQuestion(level, gameType, clickedResult) {
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
+    //function play() {
+    //    var audio = document.getElementById("audio");
+        
+    //}
+    //(function ($) {
+    //    $.extend({
+    //        playSound: function () {
+    //            return $(
+    //                '<audio class="sound-player" autoplay="autoplay" style="display:none;">'
+    //                + '<source src="' + arguments[0] + '" />'
+    //                + '<embed src="' + arguments[0] + '" hidden="true" autostart="true" loop="false"/>'
+    //                + '</audio>'
+    //            ).appendTo('body');
+    //        },
+    //        stopSound: function () {
+    //            $(".sound-player").remove();
+    //        }
+    //    });
+    //})(jQuery);
+
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
@@ -31,6 +51,9 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
+                //audio.play();
+
+                $.playSound('http://www.soundjay.com/misc/sounds/bell-ringing-01.mp3')
 
                 //$("#feedback").css("display", "block");
                 //$(".mobile").css("display", "none");
@@ -52,7 +75,7 @@ function getQuestion(level, gameType, clickedResult) {
                     $(".answer").fadeTo(500, 1);
                     $("#feedback").css("display", "none");
                     $(".mobile").css("display", "block");
-
+                    $.stopSound();
 
                 });
             }
