@@ -123,33 +123,36 @@ function getQuestion(level, gameType, clickedResult) {
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-                        if (result.correctAnswers == 20)
+                        if (result.correctAnswers == result.questionTotal)
 
                             for (var i = 0; i < 5; i++) {
 
                                     $(".star" + [i]).addClass("golden");
                             }
-                        if (result.correctAnswers < 20 && result.correctAnswers >= 16)
+                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal*0.8))
                             for (var i = 0; i < 4; i++) {
 
                                 $(".star" + [i]).addClass("golden");
                             }
-                        if (result.correctAnswers < 16 && result.correctAnswers >= 10)
+                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6))
                             for (var i = 0; i < 3; i++) {
 
                                 $(".star" + [i]).addClass("golden");
                             }
-                        if (result.correctAnswers < 10 && result.correctAnswers >= 5)
+                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4))
                             for (var i = 0; i < 2; i++) {
 
                                 $(".star" + [i]).addClass("golden");
                             }
-                        if (result.correctAnswers < 5)
+                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2))
                             for (var i = 0; i < 1; i++) {
 
                                 $(".star" + [i]).addClass("golden");
                             }
+                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0))
+                            for (var i = 0; i < 1; i++) {
 
+                            }
                     });
 
 
