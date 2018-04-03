@@ -58,7 +58,7 @@ function getQuestion(level, gameType, clickedResult) {
 
                 //$("#feedback").css("display", "block");
                 //$(".mobile").css("display", "none");
-                var myArray = ["Bra Jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
+                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 console.log(rand);
                 $("#feedback").css("display", "block");

@@ -284,8 +284,6 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                
-               
                 QuestionTotal = 20,
 
             };
