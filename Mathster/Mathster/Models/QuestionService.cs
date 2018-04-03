@@ -11,7 +11,7 @@ namespace Mathster.Models
     public class QuestionService
     {
  
-        GameNewQuestionVM SubtractionRandomizer(Level level)
+        GameNewQuestionVM SubtractionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
             int b = 0;
@@ -46,7 +46,11 @@ namespace Mathster.Models
                     break;
             }
             Random rdm = new Random();
-            int number1 = rdm.Next(a, b);  
+            int number1 = rdm.Next(a, b);
+            while (number1 == correctFactor)
+            {
+                number1 = rdm.Next(a, b);
+            }
             int number2 = rdm.Next(c, d);
 
             int product = number1 - number2;
@@ -103,7 +107,7 @@ namespace Mathster.Models
 
             return new MultiplicationIndexVM { Level = level, GameType = gameType };
         }
-        GameNewQuestionVM MultiplicationRandomizer(Level level)
+        GameNewQuestionVM MultiplicationRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
             int b = 0;
@@ -141,7 +145,13 @@ namespace Mathster.Models
 
 
             Random rdm = new Random();
-            int number1 = rdm.Next(a, b);  
+            int number1 = rdm.Next(a, b);
+            while (number1==correctFactor)
+            {
+                number1 = rdm.Next(a, b);
+            }
+            
+
             int number2 = rdm.Next(c, d);
 
             int product = number1 * number2;
@@ -193,7 +203,7 @@ namespace Mathster.Models
             return gameNewQuestion;
 
         }
-        GameNewQuestionVM DivisionRandomizer(Level level)
+        GameNewQuestionVM DivisionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
             int b = 0;
@@ -229,6 +239,10 @@ namespace Mathster.Models
             }
             Random rdm = new Random();
             int number1 = rdm.Next(a, b);
+            while (number1 == correctFactor)
+            {
+                number1 = rdm.Next(a, b);
+            }
             int number2 = rdm.Next(c, d);
 
             int product = number1 * number2;
@@ -270,8 +284,6 @@ namespace Mathster.Models
             {
                 Factors = arrayProduct,
                 ResultOptions = arrayFakeNumbers,
-                
-               
                 QuestionTotal = 20,
 
             };
@@ -280,7 +292,7 @@ namespace Mathster.Models
 
 
         //Addition
-        GameNewQuestionVM AdditionRandomizer(Level level)
+        GameNewQuestionVM AdditionRandomizer(Level level, int? correctFactor)
         {
             int a = 0;
             int b = 0;
@@ -316,6 +328,10 @@ namespace Mathster.Models
             }
             Random rdm = new Random();
             int number1 = rdm.Next(a, b);
+            while (number1 == correctFactor)
+            {
+                number1 = rdm.Next(a, b);
+            }
             int number2 = rdm.Next(c, d);
 
             int sum = number1 + number2;
@@ -370,6 +386,7 @@ namespace Mathster.Models
             const string correctPreviousIndexKey = "correctPreviousIndex";
             const string correctAnswerCountKey = "correctAnswerCount";
             const string currentQuestionIndexKey = "currentQuestionIndex";
+            const string previousFactorKey = "previousFactorKey";
 
             if (clickedIndex == null)
             {
@@ -394,18 +411,19 @@ namespace Mathster.Models
             var currentQuestionIndex = httpContext.Session.GetInt32(currentQuestionIndexKey);
             currentQuestionIndex++;
             httpContext.Session.SetInt32(currentQuestionIndexKey, currentQuestionIndex.Value);
-
+            var factorFromBefore = httpContext.Session.GetInt32(previousFactorKey);
 
             var model = new GameNewQuestionVM();
 
             switch (gameType)
             {
                 case GameType.Multiplication:
-                    model = MultiplicationRandomizer(level);
+                    model = MultiplicationRandomizer(level, factorFromBefore);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
                     var factor1 = model.Factors[0];
+                    httpContext.Session.SetInt32(previousFactorKey,factor1);
                     var factor2 = model.Factors[1];
                     var resultOfFactors = factor1 * factor2;
                     //httpContext.Session.SetInt32(correctPreviousIndexKey, model.ResultOptions.Single(o => o == resultOfFactors));
@@ -413,12 +431,13 @@ namespace Mathster.Models
                     return model;
 
                 case GameType.Division:
-                    model = DivisionRandomizer(level);
+                    model = DivisionRandomizer(level, factorFromBefore);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
 
                     factor1 = model.Factors[0];
+                    httpContext.Session.SetInt32(previousFactorKey, factor1);
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 / factor2;
                     //httpContext.Session.SetInt32(correctPreviousIndexKey, model.ResultOptions.Single(o => o == resultOfFactors));
@@ -427,23 +446,25 @@ namespace Mathster.Models
                     return model;
 
                 case GameType.Addition:
-                    model = AdditionRandomizer(level);
+                    model = AdditionRandomizer(level, factorFromBefore);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
 
                     factor1 = model.Factors[0];
+                    httpContext.Session.SetInt32(previousFactorKey, factor1);
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 + factor2;
                     httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
                     return model;
                 case GameType.Subtraction:
-                    model = SubtractionRandomizer(level);
+                    model = SubtractionRandomizer(level, factorFromBefore);
                     model.PreviousCorrectAnswerIndex = correctPreviousIndex;
                     model.QuestionIndex = currentQuestionIndex.Value;
                     model.CorrectAnswers = httpContext.Session.GetInt32(correctAnswerCountKey).Value;
 
                     factor1 = model.Factors[0];
+                    httpContext.Session.SetInt32(previousFactorKey, factor1);
                     factor2 = model.Factors[1];
                     resultOfFactors = factor1 - factor2;
                     httpContext.Session.SetInt32(correctPreviousIndexKey, GetIndexOfPreviousQuestion(model.ResultOptions, resultOfFactors));
@@ -467,5 +488,6 @@ namespace Mathster.Models
             }
             return 0;
         }
+      
     }
 }

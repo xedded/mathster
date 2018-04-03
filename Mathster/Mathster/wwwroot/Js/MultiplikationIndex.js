@@ -32,13 +32,19 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
+                //audio.play();
+                
+                $.playSound('https://www.soundjay.com/button/sounds/button-1.mp3')
+
 
                 //$("#feedback").css("display", "block");
                 //$(".mobile").css("display", "none");
-                var myArray = ["Bra Jobbat!", "Snyggt!", "Niiiiice!"];
+                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 console.log(rand);
+                $("#feedback").css("display", "block");
                 $("#feedback").text(rand);
+
 
 
                 for (var i = 0; i < 4; i++) {
@@ -53,7 +59,7 @@ function getQuestion(level, gameType, clickedResult) {
                     $(".answer").fadeTo(500, 1);
                     $("#feedback").css("display", "none");
                     $(".mobile").css("display", "block");
-
+                    $.stopSound();
 
                 });
             }
@@ -63,6 +69,8 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "red");
                 var backgroundColor = $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color");
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
+                $.playSound('https://www.soundjay.com/button/sounds/beep-03.mp3')
+
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult && i != result.previousCorrectAnswerIndex) {
                         $(".answer").eq(i).fadeTo(500, 0);
@@ -72,6 +80,7 @@ function getQuestion(level, gameType, clickedResult) {
                     $(".answer").eq(clickedResult).css("background-color", backgColor);
                     $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", backgroundColor);
                     $(".answer").fadeTo(500, 1);
+                    $.stopSound();
                 });
             }
 
