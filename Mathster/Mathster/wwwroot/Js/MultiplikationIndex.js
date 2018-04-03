@@ -21,7 +21,22 @@ function getQuestion(level, gameType, clickedResult) {
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
-   
+    function wait(ms) {
+        var start = new Date().getTime();
+        var end = start;
+        while (end < start + ms) {
+            end = new Date().getTime();
+        }
+    }
+
+    //var delay = (function () {
+    //    var timer = 0;
+    //    return function (callback, ms) {
+    //        clearTimeout(timer);
+    //        timer = setTimeout(callback, ms);
+    //    };
+    //})();
+
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
@@ -112,47 +127,72 @@ function getQuestion(level, gameType, clickedResult) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
-                    for (var i = 0; i < 5; i++) {
-                        $(".starSpan").append("<i class='fas fa-star'></i>");
-                        $(".fa-star").addClass("star" + [i]);
+                    //for (var i = 0; i < 5; i++) {
+                    $(".starSpan").append("<i class='fas fa-star star0'></i>");
+                    $(".starSpan").append("<i class='fas fa-star star1'></i>");
+                    $(".starSpan").append("<i class='fas fa-star star2'></i>");
+                    $(".starSpan").append("<i class='fas fa-star star3'></i>");
+                    $(".starSpan").append("<i class='fas fa-star star4'></i>");
 
-                    }
+                        //$(".fa-star").addClass("star" + [i]);
+
+                    //}
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-                        if (result.correctAnswers == result.questionTotal)
+                        
+                        if (result.correctAnswers == result.questionTotal) {
+                            var i = 0;                    
 
-                            for (var i = 0; i < 5; i++) {
-
-                                    $(".star" + [i]).addClass("golden");
+                            function myLoop() {          
+                                setTimeout(function () {    
+                                    $(".star" + [i]).css("color", "gold");
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    i++;                     
+                                    if (i < 5) {            
+                                        myLoop();             
+                                    }                        
+                                }, 500)
                             }
-                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal*0.8))
-                            for (var i = 0; i < 4; i++) {
+                            myLoop();   
+                               
 
-                                $(".star" + [i]).addClass("golden");
-                            }
-                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6))
-                            for (var i = 0; i < 3; i++) {
+                            //for (var i = 0; i < 5; i++) {
+                            //    $(".star" + [i]).css("color", "gold");
+                                
 
-                                $(".star" + [i]).addClass("golden");
-                            }
-                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4))
-                            for (var i = 0; i < 2; i++) {
+                            //    //.wait(300)
 
-                                $(".star" + [i]).addClass("golden");
-                            }
-                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2))
-                            for (var i = 0; i < 1; i++) {
+                            //}
+                    
+                        }
+                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal*0.8))
+                        //    for (var i = 0; i < 4; i++) {
 
-                                $(".star" + [i]).addClass("golden");
-                            }
-                        if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0))
-                            for (var i = 0; i < 1; i++) {
+                        //        $(".star" + [i]).addClass("golden");
+                        //    }
+                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6))
+                        //    for (var i = 0; i < 3; i++) {
 
-                            }
+                        //        $(".star" + [i]).addClass("golden");
+                        //    }
+                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4))
+                        //    for (var i = 0; i < 2; i++) {
+
+                        //        $(".star" + [i]).addClass("golden");
+                        //    }
+                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2))
+                        //    for (var i = 0; i < 1; i++) {
+
+                        //        $(".star" + [i]).addClass("golden");
+                        //    }
+                        //if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0))
+                        //    for (var i = 0; i < 1; i++) {
+
+                        //    }
                     });
 
 
