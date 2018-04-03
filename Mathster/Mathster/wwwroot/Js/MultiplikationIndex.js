@@ -21,6 +21,7 @@ function getQuestion(level, gameType, clickedResult) {
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
     }
+   
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
@@ -109,16 +110,15 @@ function getQuestion(level, gameType, clickedResult) {
                     }
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
-
+                    $(".closeA").text("Stäng");
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-
                         if (result.correctAnswers == 20)
 
                             for (var i = 0; i < 5; i++) {
 
-                                $(".star" + [i]).addClass("golden");
+                                    $(".star" + [i]).addClass("golden");
                             }
                         if (result.correctAnswers < 20 && result.correctAnswers >= 16)
                             for (var i = 0; i < 4; i++) {
