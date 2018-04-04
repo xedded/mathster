@@ -78,7 +78,7 @@ ul {
     list-style: none;
     font-family: 'Trebuchet MS';
     color: white;
-    font-size: 1em;
+    font-size: 0.8em;
     padding-left: 0;
 }
 #videoList {
@@ -86,7 +86,7 @@ ul {
 }
 
 li {
-    padding: 10px;
+    padding: 2px;
 }
 .squirrel img{
     height: 200px;
