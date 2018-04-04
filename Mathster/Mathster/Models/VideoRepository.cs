@@ -22,7 +22,7 @@ namespace Mathster.Models
                     return model;
                  
                 case GameType.Addition:
-                    model.MultiplicationVideo = "https://www.youtube.com/embed/Z4XQWOVs2_g?rel=0&autoplay=1B";
+                    model.MultiplicationVideo = "https://www.youtube.com/embed/Z4XQWOVs2_g?rel=0&autoplay=1";
                     return model;
                  
                 case GameType.Subtraction:
