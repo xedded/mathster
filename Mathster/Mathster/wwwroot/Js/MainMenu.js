@@ -5,7 +5,7 @@
     $('.easyA').text("LÄTT");
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
-    $('.mathster').text("MATHSTER");
+    //$('.mathster').text("MATHSTER");
     $('.slash').append("<h1>/</h1>");
 
     $(".multiplication").text("Multiplikation");

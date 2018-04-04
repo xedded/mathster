@@ -86,14 +86,17 @@ ul {
 li {
     padding: 10px;
 }
-img {
+.squirrel img{
     height: 200px;
+}
+.mathster img{
+    height:160px;
 }
 #shark{
     border:none;
     background:none;
     box-shadow:none;
-    padding-right:120px;
+    padding-right:70px;
 }
 #questions {
     font-size: 2em;
