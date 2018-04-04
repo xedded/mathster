@@ -1,6 +1,7 @@
 ﻿body {
     background-image: url("/MathsterBackground.png");
     background-size: cover;
+    margin-top:-10px;
 }
 
 .mathster {
@@ -31,7 +32,7 @@ flex-direction:column;
 justify-content:space-between;
 align-content:center;
 height:720px;
-margin:2%;
+/*margin:2%;*/
 }
 
 .row {
@@ -86,14 +87,23 @@ ul {
 li {
     padding: 10px;
 }
-img {
+.squirrel img{
     height: 200px;
+    padding-top:55px;
+
 }
-#shark{
+.mathster img {
+    height: 200px;
+
+}
+.mathster {
+
+}
+#squirrel{
     border:none;
     background:none;
     box-shadow:none;
-    padding-right:120px;
+    padding-right:70px;
 }
 #questions {
     font-size: 2em;

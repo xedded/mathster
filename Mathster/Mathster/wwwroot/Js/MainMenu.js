@@ -5,8 +5,8 @@
     $('.easyA').text("LÄTT");
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
-    $('.mathster').text("MATHSTER");
-    $('.slash').append("<h1>/</h1>");
+    //$('.mathster').text("MATHSTER");
+    $('.slash').text("/").css("font-size", "10em");
 
     $(".multiplication").text("Multiplikation");
     $(".division").text("Division");
@@ -52,11 +52,11 @@
         }
     );
     $('#instructionVideo').hover(function () {
-        $('.fa-video').css('display', 'none')
+        $('.fa-play').css('display', 'none')
         $('#videoList').css('display', 'block')
     },
         function () {
-            $('.fa-video').css('display', 'block')
+            $('.fa-play').css('display', 'block')
             $('#videoList').css('display', 'none')
         }
     );
