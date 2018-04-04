@@ -3,7 +3,6 @@
 function loadPage(level, gameType) {
 
     getQuestion(level, gameType);
-    // skapa en variabel canclick, sätt den till false och sedan till true efter ajax
 
     $(".answer").click(function () {
         if (canClick) {
@@ -12,9 +11,7 @@ function loadPage(level, gameType) {
             getQuestion(level, gameType, clickedResult);
         }
     });
-
 };
-
 
 function getQuestion(level, gameType, clickedResult) {
 
@@ -29,14 +26,6 @@ function getQuestion(level, gameType, clickedResult) {
         }
     }
 
-    //var delay = (function () {
-    //    var timer = 0;
-    //    return function (callback, ms) {
-    //        clearTimeout(timer);
-    //        timer = setTimeout(callback, ms);
-    //    };
-    //})();
-
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
@@ -47,20 +36,12 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
-                //audio.play();
 
                 $.playSound('https://www.soundjay.com/button/sounds/button-1.mp3')
 
-
-                //$("#feedback").css("display", "block");
-                //$(".mobile").css("display", "none");
                 var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
-                console.log(rand);
-                $("#feedback").css("display", "block");
                 $("#feedback").text(rand);
-
-
 
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult) {
@@ -99,10 +80,6 @@ function getQuestion(level, gameType, clickedResult) {
                 });
             }
 
-            //if (clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[0] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[1] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[2] || clickedResult && result.previousCorrectAnswerIndex != result.resultOptions[3] ) {
-            //    $(".answer").eq().css("background-color", "lime");
-            //}
-
             if (result.questionIndex <= result.questionTotal) { // Kom ihåg att ändra till <= !!!
 
                 sleep(1000).then(() => {
@@ -127,16 +104,11 @@ function getQuestion(level, gameType, clickedResult) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
-                    //for (var i = 0; i < 5; i++) {
                     $(".starSpan").append("<i class='fas fa-star star0'></i>");
                     $(".starSpan").append("<i class='fas fa-star star1'></i>");
                     $(".starSpan").append("<i class='fas fa-star star2'></i>");
                     $(".starSpan").append("<i class='fas fa-star star3'></i>");
                     $(".starSpan").append("<i class='fas fa-star star4'></i>");
-
-                    //$(".fa-star").addClass("star" + [i]);
-
-                    //}
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
@@ -236,10 +208,7 @@ function getQuestion(level, gameType, clickedResult) {
                             myLoop();
                         }
                     });
-
-
                 });
-
             }
         }
     });

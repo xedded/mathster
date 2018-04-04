@@ -8,10 +8,6 @@
     $('.mathster').text("MATHSTER");
     $('.slash').append("<h1>/</h1>");
 
-    $('.multiplication').text("Multiplikation");
-    $('.division').text("Division");
-    $('.addition').text("Addition");
-    $('.subtraction').text("Subtraktion");
 
 
     $('#multiplication').hover(function () {
