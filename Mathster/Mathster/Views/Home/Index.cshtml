@@ -49,18 +49,20 @@
 
         <div class="menuChoice wrapper" id="settings">
             <i class="fas fa-cog"></i>
-            <ul id="questions">
-                <li><input type="radio" name="tenQuestions" value="10" /> 10 Frågor </li>
+            <form asp-controller="game" asp-action="index">
+                <ul id="questions">
+                    <li><input type="radio" name="tenQuestions" value="10" /> 10 Frågor </li>
 
-                <li><input type="radio" name="tenQuestions" value="20" /> 20 Frågor</li>
+                    <li><input type="radio" name="tenQuestions" value="20" /> 20 Frågor</li>
 
-                <li><input type="checkbox" name="noSound" value="3" /> Ljud Av</li>
+                    <li><input type="checkbox" name="noSound" value="3" /> Ljud Av</li>
 
-            </ul>
+                </ul>
+                </form>
         </div>
 
         <div class="menuChoice wrapper" id="instructionVideo">
-            <i class="fas fa-video"></i>
+            <i class="fas fa-play"></i>
             <ul id="videoList">
                 <li><a class="addition" asp-controller="Video" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
                 <li><a class="subtraction" asp-controller="Video" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
