@@ -52,11 +52,11 @@
         }
     );
     $('#instructionVideo').hover(function () {
-        $('.fa-video').css('display', 'none')
+        $('.fa-play').css('display', 'none')
         $('#videoList').css('display', 'block')
     },
         function () {
-            $('.fa-video').css('display', 'block')
+            $('.fa-play').css('display', 'block')
             $('#videoList').css('display', 'none')
         }
     );

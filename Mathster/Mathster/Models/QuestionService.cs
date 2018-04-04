@@ -10,7 +10,7 @@ namespace Mathster.Models
 {
     public class QuestionService
     {
-        int numberOfQuestions = 5;
+        int numberOfQuestions = 10;
 
         GameNewQuestionVM SubtractionRandomizer(Level level, int? correctFactor)
         {

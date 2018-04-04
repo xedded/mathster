@@ -41,6 +41,7 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
+                $("#feedback").css("display", "block");
                 $("#feedback").text(rand);
 
                 for (var i = 0; i < 4; i++) {
