@@ -1,4 +1,6 @@
-﻿
+﻿body{
+    margin-top:0;
+}
 .resultDiv{
     display:flex;
     flex-direction:column;

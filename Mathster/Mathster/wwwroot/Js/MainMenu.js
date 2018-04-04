@@ -6,7 +6,7 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     //$('.mathster').text("MATHSTER");
-    $('.slash').append("<h1>/</h1>");
+    $('.slash').text("/").css("font-size", "10em");
 
     $(".multiplication").text("Multiplikation");
     $(".division").text("Division");
