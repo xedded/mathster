@@ -1,19 +1,37 @@
 ﻿var canClick = true;
-
+var clickSound = true;
 function loadPage(level, gameType) {
+    $('.fa-volume-up').css('display', 'block')
+    $('.fa-volume-off').css('display', 'none')
 
-    getQuestion(level, gameType);
+    $('#mute-button').click(function () {
+        clickSound = !clickSound
+        console.log(clickSound);
+        if (clickSound) {
+            $('.fa-volume-up').css('display', 'block')
+            $('.fa-volume-off').css('display', 'none')
+        }
+        else {
+            $('.fa-volume-off').css('display', 'block')
+            $('.fa-volume-up').css('display', 'none')
+        }
+
+
+    });
+    getQuestion(level, gameType, clickSound);
 
     $(".answer").click(function () {
         if (canClick) {
             canClick = false;
             clickedResult = $(".answer").index(this);
-            getQuestion(level, gameType, clickedResult);
+            getQuestion(level, gameType, clickedResult, clickSound);
+            
         }
     });
+    
 };
 
-function getQuestion(level, gameType, clickedResult) {
+function getQuestion(level, gameType, clickedResult, clickSound) {
 
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -36,8 +54,10 @@ function getQuestion(level, gameType, clickedResult) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
                 $(".answer").eq(clickedResult).css("background-color", "green");
+                if (clickSound) {
 
                 $.playSound('https://www.soundjay.com/button/sounds/button-1.mp3')
+                }
 
                 var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
@@ -66,7 +86,10 @@ function getQuestion(level, gameType, clickedResult) {
                 $(".answer").eq(clickedResult).css("background-color", "red");
                 var backgroundColor = $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color");
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
+                if (clickSound) {
+
                 $.playSound('https://www.soundjay.com/button/sounds/beep-03.mp3')
+                }
 
                 for (var i = 0; i < 4; i++) {
                     if (i != clickedResult && i != result.previousCorrectAnswerIndex) {
@@ -123,7 +146,10 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
+                                    if (clickSound) {
                                     $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+
+                                    }
                                     i++;
                                     if (i < 5) {
                                         myLoop();
@@ -139,7 +165,9 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
-                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    if (clickSound) {
+                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    }
                                     i++;
                                     if (i < 4) {
                                         myLoop();
@@ -154,7 +182,9 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
-                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    if (clickSound) {
+                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    }
                                     i++;
                                     if (i < 3) {
                                         myLoop();
@@ -169,7 +199,9 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
-                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    if (clickSound) {
+                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    }
                                     i++;
                                     if (i < 2) {
                                         myLoop();
@@ -184,7 +216,9 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
-                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    if (clickSound) {
+                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    }
                                     i++;
                                     if (i < 1) {
                                         myLoop();
@@ -199,7 +233,9 @@ function getQuestion(level, gameType, clickedResult) {
                             function myLoop() {
                                 setTimeout(function () {
                                     $(".star" + [i]).css("color", "gold");
-                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    if (clickSound) {
+                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                    }
                                     i++;
                                     if (i < 0) {
                                         myLoop();
