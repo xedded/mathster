@@ -99,6 +99,9 @@
         cursor: pointer;
         background-color: #60b394;
     }
+.sound {
+    text-shadow: 2px 2px 10px #000000;
+}
 
 /*.answer1 {
     background-color: #47826d;

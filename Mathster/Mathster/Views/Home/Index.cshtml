@@ -1,12 +1,11 @@
 ﻿@using Mathster.Models
 
 @*<video autoplay muted loop id="myVideo">
-    <source src="~/waves.mp4.mov" type="video/mp4">
-</video>*@
+        <source src="~/waves.mp4.mov" type="video/mp4">
+    </video>*@
 <div class="container" id="container">
     <div class="mathster slide-left" id="mathster">
-        <img class="mathsterLogo"src="~/ropelogo.png" />
-
+        <img class="mathsterLogo" src="~/ropelogo.png" />
     </div>
 
 
@@ -17,6 +16,8 @@
                 <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
                 <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
                 <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
+                <li><a class="video" asp-controller="Video" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
+
             </ul>
         </div>
 
@@ -26,6 +27,8 @@
                 <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
                 <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
                 <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
+                <li><a class="video" asp-controller="Video" asp-route-gametype="@nameof(GameType.Subtraction)"></a></li>
+
             </ul>
         </div>
         <div class="menuChoice wrapper" id="multiplication">
@@ -34,6 +37,8 @@
                 <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
                 <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
                 <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
+                <li><a class="video" asp-controller="Video" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
+
             </ul>
         </div>
 
@@ -43,28 +48,14 @@
                 <li><a class="easyA" asp-controller="Game" asp-route-level="@nameof(Level.Easy)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
                 <li><a class="mediumA" asp-controller="Game" asp-route-level="@nameof(Level.Medium)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
                 <li><a class="hardA" asp-controller="Game" asp-route-level="@nameof(Level.Hard)" asp-route-gametype="@nameof(GameType.Division)"></a></li>
+                <li><a class="video" asp-controller="Video" asp-route-gametype="@nameof(GameType.Division)"></a></li>
             </ul>
         </div>
 
-        <div class="menuChoice squirrel" id="squirrel">
-            <img src="~/ekorre.png" />
-        </div>
 
-        <div class="menuChoice wrapper" id="settings">
-            <i class="fas fa-cog"></i>
-            <form asp-controller="game" asp-action="index">
-                <ul id="questions">
-                    <li><input type="radio" name="tenQuestions" value="10" /> 10 Frågor </li>
 
-                    <li><input type="radio" name="tenQuestions" value="20" /> 20 Frågor</li>
 
-                    <li><input type="checkbox" name="noSound" value="3" /> Ljud Av</li>
-
-                </ul>
-                </form>
-        </div>
-
-        <div class="menuChoice wrapper" id="instructionVideo">
+        @*<div class="menuChoice wrapper" id="instructionVideo">
             <i class="fas fa-play"></i>
             <ul id="videoList">
                 <li><a class="addition" asp-controller="Video" asp-route-gametype="@nameof(GameType.Addition)"></a></li>
@@ -72,6 +63,13 @@
                 <li><a class="multiplication" asp-controller="Video" asp-route-gametype="@nameof(GameType.Multiplication)"></a></li>
                 <li><a class="division" asp-controller="Video" asp-route-gametype="@nameof(GameType.Division)"></a></li>
             </ul>
+        </div>*@
+
+
+    </div>
+    <div class="squirrelDiv">
+        <div class="menuChoice squirrel" id="squirrel">
+            <img src="~/ekorre.png" />
         </div>
     </div>
 </div>
@@ -79,11 +77,11 @@
 
 
 
+<script src="~/Js/MainMenu.js"></script>
+<link href="~/Scripts/StartPage.css" rel="stylesheet" />
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Js/MainMenu.js"></script>
-<link href="~/Scripts/StartPage.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 
 <script>
