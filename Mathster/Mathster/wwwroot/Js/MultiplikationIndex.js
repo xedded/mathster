@@ -98,6 +98,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.stopSound();
                 });
             }
+            result.questionTotal = 1;
             if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
@@ -114,20 +115,23 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                         $("#answerDiv" + i).text(result.resultOptions[i - 1]);
                     }
 
-                    $("#containerDiv").css("visibility", "visible");
+                    $("#containerDiv").css("display", "block");
                     canClick = true;
+
                 });
             }
             else {
+
                 sleep(1000).then(() => {
+
                     $("#containerDiv").css("display", "none");
-                    $("#resultDiv").css("display", "none");
-                  
+                    $(".resultDiv").css("display", "block");
+
+
                     if (level == "Hard") {
                         $(".nextButton").css("display", "hide");
 
                     }
-                    $("#resultDiv").css("display", "block");
 
                     $(".starSpan").append("<i class='fas fa-star star0'></i>");
                     $(".starSpan").append("<i class='fas fa-star star1'></i>");
@@ -137,8 +141,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $(".closeButton").addClass("closeButtonDiv");
                     $(".againButton").addClass("closeButtonDiv");
 
-                    if (level != "Hard") {
-                    }
+
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
@@ -148,6 +151,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                         window.location.href = "/" + gameType + "/" + level;
                     });
                     if (level != "Hard") {
+
                         $(".nextButton").addClass("closeButtonDiv");
                         $(".nextLevel").text("Nästa nivå");
                         $('.nextButton').click(function () {
