@@ -200,6 +200,10 @@ namespace Mathster.Models
                 }
 
                 fakeNumber3 = product + nr;
+                while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == product)
+                {
+                    fakeNumber3 = rdm.Next(rangeMin, rangeMax);
+                }
             }
 
 
