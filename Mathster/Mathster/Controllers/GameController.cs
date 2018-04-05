@@ -25,7 +25,7 @@ namespace Mathster.Controllers
         [Route("{gametype}/{level}")]
         public IActionResult Index(Level level, GameType gameType)
         {
-            var model = questionService.GetMultiplicationIndexVM(level, gameType);
+            var model = questionService.GetGameIndexVM(level, gameType);
 
             return View(model);
         }
