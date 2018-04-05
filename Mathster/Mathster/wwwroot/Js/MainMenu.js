@@ -1,5 +1,4 @@
 ﻿function loadPage() {
-
     $('ul').css("display", "none");
 
     $('.easyA').text("LÄTT");
@@ -20,7 +19,7 @@
         });
 
         $('#division').click(function () {
-            $('.fa-times').css('display', 'none')
+            $('.slash').css('display', 'none')
             $('#multiList').css('display', 'none')
             $('#plusList').css('display', 'none')
             $('#divList').css('display', 'block')
@@ -28,14 +27,14 @@
         });
 
         $('#addition').click(function () {
-            $('.fa-times').css('display', 'none')
+            $('.fa-plus').css('display', 'none')
             $('#multiList').css('display', 'none')
             $('#plusList').css('display', 'block')
             $('#divList').css('display', 'none')
             $('#minusList').css('display', 'none')
         });
         $('#subtraction').click(function () {
-            $('.fa-times').css('display', 'none')
+            $('.fa-minus').css('display', 'none')
             $('#multiList').css('display', 'none')
             $('#plusList').css('display', 'none')
             $('#divList').css('display', 'none')
