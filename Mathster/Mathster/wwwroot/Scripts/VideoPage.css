@@ -5,6 +5,7 @@
 }
 h1 {
     text-shadow: 2px 2px 10px #000000;
+    color: #47826d;
 }
 .container {
     
@@ -50,9 +51,7 @@ h1 {
     max-height:100px;
     max-width:105px;
 }
-.squirrelVideoDiv {
 
-}
 
 
 @media only screen and (max-device-width : 800px) {
