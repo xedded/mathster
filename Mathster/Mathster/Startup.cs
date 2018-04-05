@@ -18,6 +18,7 @@ namespace Mathster
         {
             services.AddTransient<QuestionService>();
             services.AddTransient<VideoRepository>();
+            services.AddTransient<InfoRepository>();
             services.AddSession();
             services.AddMvc();
         }
