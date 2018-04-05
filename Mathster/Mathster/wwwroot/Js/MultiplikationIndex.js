@@ -121,10 +121,13 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
+                    $("#resultDiv").css("display", "none");
+                  
                     if (level == "Hard") {
                         $(".nextButton").css("display", "hide");
 
                     }
+                    $("#resultDiv").css("display", "block");
 
                     $(".starSpan").append("<i class='fas fa-star star0'></i>");
                     $(".starSpan").append("<i class='fas fa-star star1'></i>");
