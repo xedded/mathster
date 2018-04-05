@@ -302,10 +302,10 @@ namespace Mathster.Models
             switch (level)
             {
                 case Level.Easy:
-                    a = 1;
-                    b = 10;
-                    c = 0;
-                    d = 11;
+                    a = 0;
+                    b = 11;
+                    c = 1;
+                    d = 10;
                     break;
 
                 case Level.Medium:
@@ -337,12 +337,12 @@ namespace Mathster.Models
             int sum = number1 + number2;
             int[] arraySum = new int[2] { number1, number2 };
 
-            int rangeMin = sum - 10;
+            int rangeMin = sum - (number2+1);
             if (rangeMin < 0)
             {
                 rangeMin = 0;
             }
-            int rangeMax = sum + 10;
+            int rangeMax = sum + (number2+1);
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
