@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Mathster.Models
 {
@@ -10,11 +11,13 @@ namespace Mathster.Models
     {
         public InfoIndexVM GetInfo(GameType gameType)
         {
-            var model = new InfoIndexVM();
+       
+
+             var model = new InfoIndexVM();
             switch (gameType)
             {
                 case GameType.Multiplication:
-                    model.Info = @"C:/Users/Administrator/source/repos/MathsterAcademy/Mathster/Mathster/wwwroot/subt-1.png";
+                    model.Info = "https://cdn3.cdnme.se/4790426/8-3/matteinfo_5ac61264ddf2b344fab90875.png";
                     return model;
 
                 case GameType.Division:
