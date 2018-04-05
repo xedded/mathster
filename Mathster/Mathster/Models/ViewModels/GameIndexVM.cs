@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace Mathster.Models.ViewModels
 {
-    public class InstructionVideoVM
+    public class GameIndexVM
     {
-        public string GameTypeVideo { get; set; }
+        public Level Level { get; set; }
+        public GameType GameType { get; set; }
     }
 }

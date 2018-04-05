@@ -4,6 +4,14 @@
     margin-top:-10px;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    height: 720px;
+}
+
 .mathster {
     font-family: 'Trebuchet MS';
     color: white;
@@ -12,7 +20,9 @@
     text-shadow: 2px 2px 10px #000000;
     height:25%; 
 }
-
+    .mathster img {
+        height: 200px;
+    }
 
 a, a:visited, a:hover, a:active {
     text-decoration: none;
@@ -24,17 +34,6 @@ a, a:visited, a:hover, a:active {
     a:hover {
         color: #bdbdbd;
     }
-
-
-
-.container {
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-align-content:center;
-height:720px;
-/*margin:2%;*/
-}
 
 .row {
     display: flex;
@@ -82,25 +81,15 @@ ul {
     font-size: 0.8em;
     padding-left: 0;
 }
-#videoList {
-    font-size: 0.7em;
-}
 
 li {
     padding: 2px;
 }
 .squirrel img{
     height: 200px;
-    /*padding-top:35px;*/
 
 }
-.mathster img {
-    height: 200px;
 
-}
-.mathster {
-
-}
 #squirrel{
     border:none;
     background:none;
@@ -112,18 +101,7 @@ li {
     align-items:center;
     justify-content:center;
 }
-#questions {
-    font-size: 2em;
-    text-shadow: 2px 2px 10px #000000;
-}
-#myVideo {
-    position: fixed;
-    z-index:-1;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
     body{
         background-size:140%;
@@ -168,6 +146,7 @@ li {
     body {
         background-size: 120%;
     }
+
     .container {
         height: 370px;
         display: flex;
@@ -175,18 +154,19 @@ li {
         align-content: center;
         justify-content: center;
     }
-    /*.container{
-        display:flex;
-        flex-direction:column;
-        align-content:space-between;
-        justify-content:space-between;
-    }*/
+
     .mathster img {
         height: 100px;
     }
+
     .mathster{
         margin-top:-70px;
         height:10%;
+    }
+
+    .row{
+        height:40%;
+        margin-top:150px;
     }
 
     .menuChoice {
@@ -199,14 +179,11 @@ li {
 
     .squirrelDiv img {
 
-        height: 120px;
+        height: 10px;
         padding:0;
         margin-bottom:-10px;
     }
-    .row{
-        height:40%;
-        margin-top:150px;
-    }
+
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation : portrait) {
@@ -231,12 +208,7 @@ li {
         align-content: center;
         justify-content: center;
     }
-    /*.container{
-        display:flex;
-        flex-direction:column;
-        align-content:space-between;
-        justify-content:space-between;
-    }*/
+
     .mathster img {
         height: 100px;
     }
@@ -255,7 +227,7 @@ li {
     }
 
     .squirrelDiv img {
-        height: 120px;
+        height: 100px;
         padding: 0;
         margin-bottom: -10px;
     }
@@ -266,99 +238,3 @@ li {
     }
 }
 
-/*@media only screen and (max-device-width : 800px) {
-    body {
-        background-size: 330%;
-    }
-
-    .mathster {
-        display:flex;
-        justify-content:center;
-        align-content:flex-start;
-        font-family: 'Trebuchet MS';
-        color: white;
-        font-size: 4em;
-        text-align: center;
-        height:10%;
-    }
-
-
-    a, a:visited, a:hover, a:active {
-        text-decoration: none;
-        color: white;
-        font-size: 2em;
-        text-shadow: 2px 2px 10px #000000;
-        margin:0;
-        padding:0;
-    }
-
-        a:hover {
-            color: #bdbdbd;
-        }
-
-
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content:center;
-        height: 600px;
-        padding: 0;
-        margin: 0;
-    }
-
-    .row {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        height: 70%;
-
-    }
-
-    .menuChoice {
-        display: flex;
-        flex-direction:column;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #47826d;
-        height: 25%;
-        width: 35%;
-        border: solid;
-        border-color: white;
-        border-radius:0;
-        border-width: 7px;
-        margin:2%;
-        text-align: center;
-        box-shadow: 4px 4px 20px #000000;
-    }
-
-    .fas {
-        font-size: 100px;
-        color: white;
-        text-shadow: 2px 2px 10px #000000;
-    }
-
-    ul {
-        list-style: none;
-        font-family: 'Trebuchet MS';
-        color: white;
-        font-size: 13px;
-        padding-left: 0;
-        padding:0;
-        margin:0;
-    }
-
-    li {
-    }
-
-    img {
-        height: 120px;
-        padding-left:120px;
-    }
-    .slash{
-        font-size:50px;
-    }
-
-
-}*/

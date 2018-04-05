@@ -1,4 +1,5 @@
-﻿@model MultiplicationIndexVM
+﻿@model GameIndexVM
+
 
 <div class="resultDiv" id="resultDiv">
     <span class="starSpan"></span>
@@ -9,8 +10,6 @@
         <div class="nextButton"><a class='nextLevel' asp-controller="Game"></a></div>
             </div>
     </div>
-
-
 
 <div class="container" id="containerDiv" style="visibility:hidden">
     <div class="arrowAndInfo">
@@ -34,7 +33,6 @@
     <div id="mute-button">
         <i class="fas fa-volume-off sound"></i>
         <i class="fas fa-volume-up sound"></i>
-
     </div>
 </div>
 
@@ -58,7 +56,4 @@
         loadPage("@Model.Level", "@Model.GameType");
     });
 </script>
-@*<audio controls="controls">
-        <source src="~/Correct%20Answer%20Button%20Sound%20Effect.mp3" type="audio/mpeg" />
-    </audio>*@
-@*<audio id="audio" src="http://www.soundjay.com/misc/sounds/bell-ringing-01.mp3"></audio>*@
+

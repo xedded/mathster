@@ -103,10 +103,10 @@ namespace Mathster.Models
             };
             return gameNewQuestion;
         }
-        public MultiplicationIndexVM GetMultiplicationIndexVM(Level level, GameType gameType)
+        public GameIndexVM GetGameIndexVM(Level level, GameType gameType)
         {
 
-            return new MultiplicationIndexVM { Level = level, GameType = gameType };
+            return new GameIndexVM { Level = level, GameType = gameType };
         }
         GameNewQuestionVM MultiplicationRandomizer(Level level, int? correctFactor)
         {
