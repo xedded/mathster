@@ -7,6 +7,6 @@ namespace Mathster.Models.ViewModels
 {
     public class InstructionVideoVM
     {
-        public string MultiplicationVideo { get; set; }
+        public string GameTypeVideo { get; set; }
     }
 }
