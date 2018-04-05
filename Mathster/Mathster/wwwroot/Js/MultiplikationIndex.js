@@ -43,13 +43,14 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
             end = new Date().getTime();
         }
     }
-
+    console.log(level);
+    console.log(gameType);
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
         data: null,
         success: function (result) {
-
+            
             if (clickedResult == result.previousCorrectAnswerIndex && clickedResult != null) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
@@ -136,10 +137,19 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
+                    $(".sameLevel").text("Spela igen");
+                    $('.sameLevel').click(function () {
+                        window.location.href = "/" + gameType + "/" + level; 
+                    });
+                     
+                        
+                        
+
+
                     $("#resultDiv").css("display", "block");
 
                     sleep(1000).then(() => {
-
+                        
                         if (result.correctAnswers == result.questionTotal) {
                             var i = 0;
 

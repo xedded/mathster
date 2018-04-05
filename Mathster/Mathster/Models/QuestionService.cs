@@ -178,11 +178,30 @@ namespace Mathster.Models
             {
                 fakeNumber2 = rdm.Next(rangeMin, rangeMax);
             }
+          
             int fakeNumber3 = rdm.Next(rangeMin, rangeMax);
+            
             while (fakeNumber3 == fakeNumber2 || fakeNumber3 == fakeNumber1 || fakeNumber3 == product)
             {
                 fakeNumber3 = rdm.Next(rangeMin, rangeMax);
             }
+            // at least two options that contains the correct last digit
+            if (number1 > 10|| number2>10)
+            {
+               int  nbr = rdm.Next(0, 2);
+                int nr = 0;
+                if (nbr==0)
+                {
+                    nr = 10;
+                }
+                else if (nbr == 1)
+                {
+                   nr = -10;
+                }
+
+                fakeNumber3 = product + nr;
+            }
+
 
             List<int> list = new List<int> { product, fakeNumber1, fakeNumber2, fakeNumber3 };
 
@@ -302,10 +321,10 @@ namespace Mathster.Models
             switch (level)
             {
                 case Level.Easy:
-                    a = 1;
-                    b = 10;
-                    c = 0;
-                    d = 11;
+                    a = 0;
+                    b = 11;
+                    c = 1;
+                    d = 10;
                     break;
 
                 case Level.Medium:
@@ -336,13 +355,23 @@ namespace Mathster.Models
 
             int sum = number1 + number2;
             int[] arraySum = new int[2] { number1, number2 };
+            //result options cant go below the terms
+            int nr = 3;
+            if (number1>=number2&&number2>1)
+            {
+                nr = number2 ;
+            }
+            else if (number2>number1 && number1 > 1)
+            {
+                nr = number1 ;
+            }
 
-            int rangeMin = sum - 10;
+            int rangeMin = sum - nr;
             if (rangeMin < 0)
             {
                 rangeMin = 0;
             }
-            int rangeMax = sum + 10;
+            int rangeMax = sum + nr;
 
 
             int fakeNumber1 = rdm.Next(rangeMin, rangeMax);
