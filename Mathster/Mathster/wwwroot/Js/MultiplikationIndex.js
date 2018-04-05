@@ -1,22 +1,20 @@
 ﻿var canClick = true;
 var clickSound = true;
 function loadPage(level, gameType) {
-    $('.fa-volume-up').css('display', 'block')
-    $('.fa-volume-off').css('display', 'none')
+    $('.fa-volume-up').css('display', 'block');
+    $('.fa-volume-off').css('display', 'none');
 
     $('#mute-button').click(function () {
         clickSound = !clickSound
-        console.log(clickSound);
+
         if (clickSound) {
-            $('.fa-volume-up').css('display', 'block')
-            $('.fa-volume-off').css('display', 'none')
+            $('.fa-volume-up').css('display', 'block');
+            $('.fa-volume-off').css('display', 'none');
         }
         else {
-            $('.fa-volume-off').css('display', 'block')
-            $('.fa-volume-up').css('display', 'none')
+            $('.fa-volume-off').css('display', 'block');
+            $('.fa-volume-up').css('display', 'none');
         }
-
-
     });
     getQuestion(level, gameType, clickSound);
 
@@ -25,10 +23,9 @@ function loadPage(level, gameType) {
             canClick = false;
             clickedResult = $(".answer").index(this);
             getQuestion(level, gameType, clickedResult, clickSound);
-            
+
         }
     });
-    
 };
 
 function getQuestion(level, gameType, clickedResult, clickSound) {
@@ -43,14 +40,13 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
             end = new Date().getTime();
         }
     }
-    console.log(level);
-    console.log(gameType);
+
     $.ajax({
         url: "/" + gameType + "/nextquestion/ " + level + " / " + clickedResult,
         type: "POST",
         data: null,
         success: function (result) {
-            
+
             if (clickedResult == result.previousCorrectAnswerIndex && clickedResult != null) {
 
                 var bgColor = $(".answer").eq(clickedResult).css("background-color");
@@ -60,7 +56,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.playSound('http://blog.angelsevov.se/wp-content/uploads/2018/04/Correct_Answer_Button_Sound_Effect.mp3')
                 }
 
-                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
+                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", "Du knäcker!", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 $("#feedback").css("display", "block");
                 $("#feedback").text(rand);
@@ -76,9 +72,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
                     $(".answer").fadeTo(500, 1);
                     $("#feedback").css("display", "none");
-                    $(".mobile").css("display", "block");
                     $.stopSound();
-
                 });
             }
             else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null) {
@@ -89,7 +83,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                 $(".answer").eq(result.previousCorrectAnswerIndex).css("background-color", "green");
                 if (clickSound) {
 
-                $.playSound('https://www.soundjay.com/button/sounds/beep-03.mp3')
+                    $.playSound('https://www.soundjay.com/button/sounds/beep-03.mp3')
                 }
 
                 for (var i = 0; i < 4; i++) {
@@ -104,7 +98,6 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.stopSound();
                 });
             }
-
             if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
@@ -122,144 +115,181 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     }
 
                     $("#containerDiv").css("visibility", "visible");
-                    $("#test").css("display", "none");
                     canClick = true;
                 });
             }
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
+                    if (level == "Hard") {
+                        $(".nextButton").css("display", "hide");
+
+                    }
+
                     $(".starSpan").append("<i class='fas fa-star star0'></i>");
                     $(".starSpan").append("<i class='fas fa-star star1'></i>");
                     $(".starSpan").append("<i class='fas fa-star star2'></i>");
                     $(".starSpan").append("<i class='fas fa-star star3'></i>");
                     $(".starSpan").append("<i class='fas fa-star star4'></i>");
+                    $(".closeButton").addClass("closeButtonDiv");
+                    $(".againButton").addClass("closeButtonDiv");
+
+                    if (level != "Hard") {
+                    }
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
                     $(".sameLevel").text("Spela igen");
-                    $('.sameLevel').click(function () {
-                        window.location.href = "/" + gameType + "/" + level; 
+
+                    $('.againButton').click(function () {
+                        window.location.href = "/" + gameType + "/" + level;
                     });
-                     
-                        
-                        
+                    if (level != "Hard") {
+                        $(".nextButton").addClass("closeButtonDiv");
+                        $(".nextLevel").text("Nästa nivå");
+                        $('.nextButton').click(function () {
+                            if (gameType == "Multiplication" && level == "Easy") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Multiplication/Medium");
+                            }
+                            else if (gameType == "Multiplication" && level == "Medium") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Multiplication/Hard");
+                            }
+                            else if (gameType == "Division" && level == "Easy") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Division/Medium");
+                            }
+                            else if (gameType == "Division" && level == "Medium") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Division/Hard");
+                            }
+                            else if (gameType == "Addition" && level == "Easy") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Addition/Medium");
+                            }
+                            else if (gameType == "Addition" && level == "Medium") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Addition/Hard");
+                            }
+                            else if (gameType == "Subtraction" && level == "Easy") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Subtraction/Medium");
+                            }
+                            else if (gameType == "Subtraction" && level == "Medium") {
+                                window.location.replace("http://mathstergame.azurewebsites.net/Subtraction/Hard");
+                            }
+                        });
+                    }
+                });
 
+                $("#resultDiv").css("display", "block");
 
-                    $("#resultDiv").css("display", "block");
+                sleep(1000).then(() => {
 
-                    sleep(1000).then(() => {
-                        
-                        if (result.correctAnswers == result.questionTotal) {
-                            var i = 0;
+                    if (result.correctAnswers == result.questionTotal) {
+                        var i = 0;
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
                                     $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
 
-                                    }
-                                    i++;
-                                    if (i < 5) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
-
+                                }
+                                i++;
+                                if (i < 5) {
+                                    myLoop();
+                                }
+                            }, 500)
                         }
-                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.8)) {
-                            var i = 0;
+                        myLoop();
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
-                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    }
-                                    i++;
-                                    if (i < 4) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
-                        }
-                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6)) {
-                            var i = 0;
+                    }
+                    else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.8)) {
+                        var i = 0;
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
-                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    }
-                                    i++;
-                                    if (i < 3) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                }
+                                i++;
+                                if (i < 4) {
+                                    myLoop();
+                                }
+                            }, 500)
                         }
-                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4)) {
-                            var i = 0;
+                        myLoop();
+                    }
+                    else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.6)) {
+                        var i = 0;
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
-                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    }
-                                    i++;
-                                    if (i < 2) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                }
+                                i++;
+                                if (i < 3) {
+                                    myLoop();
+                                }
+                            }, 500)
                         }
-                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2)) {
-                            var i = 0;
+                        myLoop();
+                    }
+                    else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.4)) {
+                        var i = 0;
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
-                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    }
-                                    i++;
-                                    if (i < 1) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                }
+                                i++;
+                                if (i < 2) {
+                                    myLoop();
+                                }
+                            }, 500)
                         }
-                        else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0)) {
-                            var i = 0;
+                        myLoop();
+                    }
+                    else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.2)) {
+                        var i = 0;
 
-                            function myLoop() {
-                                setTimeout(function () {
-                                    $(".star" + [i]).css("color", "gold");
-                                    if (clickSound) {
-                                        $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
-                                    }
-                                    i++;
-                                    if (i < 0) {
-                                        myLoop();
-                                    }
-                                }, 500)
-                            }
-                            myLoop();
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                }
+                                i++;
+                                if (i < 1) {
+                                    myLoop();
+                                }
+                            }, 500)
                         }
-                    });
+                        myLoop();
+                    }
+                    else if (result.correctAnswers < result.questionTotal && result.correctAnswers >= (result.questionTotal * 0.0)) {
+                        var i = 0;
+
+                        function myLoop() {
+                            setTimeout(function () {
+                                $(".star" + [i]).css("color", "gold");
+                                if (clickSound) {
+                                    $.playSound('https://www.soundjay.com/button/sounds/button-09.mp3')
+                                }
+                                i++;
+                                if (i < 0) {
+                                    myLoop();
+                                }
+                            }, 500)
+                        }
+                        myLoop();
+                    }
                 });
             }
         }
     });
 }
+
 
 
 

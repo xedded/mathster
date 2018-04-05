@@ -102,6 +102,7 @@ li {
     justify-content:center;
 }
 
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
     body{
         background-size:140%;
@@ -115,6 +116,9 @@ li {
         margin-bottom:40px;
         height:200px;
     }
+    .hideInMobile{
+        display:none;
+    }
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
     html {
@@ -126,6 +130,7 @@ li {
         top: 100%;
         left: 0;
     }
+
     body {
         background-size: 140%;
     }
@@ -136,9 +141,13 @@ li {
     }
 
     .squirrelDiv img {
-        margin-left: 600px;
-        margin-bottom: 40px;
+        margin-left: 400px;
+        margin-bottom: 55px;
         height: 200px;
+    }
+
+    .hideInMobile {
+        display: none;
     }
 }
 
@@ -159,29 +168,32 @@ li {
         height: 100px;
     }
 
-    .mathster{
-        margin-top:-70px;
-        height:10%;
-    }
-
-    .row{
-        height:40%;
-        margin-top:150px;
+    .mathster {
+        margin-top: -70px;
+        height: 10%;
     }
 
     .menuChoice {
         height: 75%;
         width: 17%;
-        font-size:0.6em;
-        border-radius:25px;
-        border-width:5px;
+        font-size: 0.6em;
+        border-radius: 25px;
+        border-width: 5px;
     }
 
     .squirrelDiv img {
+        height: 100px;
+        padding: 0;
+        margin-bottom: -10px;
+    }
 
-        height: 10px;
-        padding:0;
-        margin-bottom:-10px;
+    .row {
+        height: 40%;
+        margin-top: 150px;
+    }
+
+    .hideInMobile {
+        display: none;
     }
 
 }
@@ -235,6 +247,9 @@ li {
     .row {
         height: 40%;
         margin-top: 150px;
+    }
+    .hideInMobile {
+        display: none;
     }
 }
 

@@ -1,21 +1,13 @@
 ﻿@model GameIndexVM
 
 
-<div class="resultDiv" id="resultDiv">
-    <span class="starSpan"></span>
-    <div class="scoreDiv"></div>
-    <div class="buttonDiv">
-        <div class='closeButtonDiv'><a class='closeA' asp-controller='Home' asp-action='Index'></a></div>
-        <div class="closeButtonDiv"><a class='sameLevel' asp-controller="Game"></a></div>
-    </div>
 
-</div>
 
 <div class="container" id="containerDiv" style="visibility:hidden">
     <div class="arrowAndInfo">
         <div class="backDiv mobile"><a asp-controller="Home" asp-action="Index"><i class="fas fa-reply"></i></a></div>
         <div id="feedback"></div>
-        <div class="mobile" id="questionIndex"></div>
+        <div id="questionIndex"></div>
     </div>
     <div class="questionContainer">
         <div class="question" id="questionDiv">
@@ -35,7 +27,15 @@
         <i class="fas fa-volume-up sound"></i>
     </div>
 </div>
-
+<div class="resultDiv" id="resultDiv">
+    <span class="starSpan"></span>
+    <div class="scoreDiv"></div>
+    <div class="buttonDiv">
+        <div class='closeButton'><a class='closeA' asp-controller='Home' asp-action='Index'></a></div>
+        <div class="againButton"><a class='sameLevel'></a></div>
+        <div class="nextButton"><a class='nextLevel'></a></div>
+    </div>
+</div>
 
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
