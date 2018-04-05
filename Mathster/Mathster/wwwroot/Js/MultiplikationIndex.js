@@ -3,11 +3,9 @@ var clickSound = true;
 function loadPage(level, gameType) {
     $('.fa-volume-up').css('display', 'block');
     $('.fa-volume-off').css('display', 'none');
-    //$('.closeButtonDiv').css('display', 'none');
 
     $('#mute-button').click(function () {
         clickSound = !clickSound
-
 
         if (clickSound) {
             $('.fa-volume-up').css('display', 'block');
@@ -17,8 +15,6 @@ function loadPage(level, gameType) {
             $('.fa-volume-off').css('display', 'block');
             $('.fa-volume-up').css('display', 'none');
         }
-
-
     });
     getQuestion(level, gameType, clickSound);
 
@@ -30,11 +26,9 @@ function loadPage(level, gameType) {
 
         }
     });
-
 };
 
 function getQuestion(level, gameType, clickedResult, clickSound) {
-
 
     function sleep(time) {
         return new Promise((resolve) => setTimeout(resolve, time));
@@ -104,7 +98,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.stopSound();
                 });
             }
-
+            result.questionIndex = 11;
             if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
@@ -128,6 +122,10 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
             else {
                 sleep(1000).then(() => {
                     $("#containerDiv").css("display", "none");
+                    if (level == "Hard") {
+                        $(".nextButton").css("display", "hide");
+
+                    }
 
                     $(".starSpan").append("<i class='fas fa-star star0'></i>");
                     $(".starSpan").append("<i class='fas fa-star star1'></i>");
@@ -136,19 +134,21 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $(".starSpan").append("<i class='fas fa-star star4'></i>");
                     $(".closeButton").addClass("closeButtonDiv");
                     $(".againButton").addClass("closeButtonDiv");
-                    $(".nextButton").addClass("closeButtonDiv");
+
+                    if (level != "Hard") {
+                    }
 
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
                     $(".sameLevel").text("Spela igen");
 
-                    $('.sameLevel').click(function () {
+                    $('.againButton').click(function () {
                         window.location.href = "/" + gameType + "/" + level;
                     });
                     if (level != "Hard") {
-                        $(".nextLevel").css("display", "block");
+                        $(".nextButton").addClass("closeButtonDiv");
                         $(".nextLevel").text("Nästa nivå");
-                        $('.nextLevel').click(function () {
+                        $('.nextButton').click(function () {
                             if (gameType == "Multiplication" && level == "Easy") {
                                 window.location.replace("http://mathstergame.azurewebsites.net/Multiplication/Medium");
                             }
@@ -289,7 +289,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
             }
         }
     });
-    }
+}
 
 
 
