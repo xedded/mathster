@@ -62,7 +62,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.playSound('http://blog.angelsevov.se/wp-content/uploads/2018/04/Correct_Answer_Button_Sound_Effect.mp3')
                 }
 
-                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
+                var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", "Du knäcker!", " ", " "];
                 var rand = myArray[Math.floor(Math.random() * myArray.length)];
                 $("#feedback").css("display", "block");
                 $("#feedback").text(rand);
@@ -78,9 +78,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $(".answer").eq(clickedResult).css("background-color", bgColor);
                     $(".answer").fadeTo(500, 1);
                     $("#feedback").css("display", "none");
-                    $(".mobile").css("display", "block");
                     $.stopSound();
-
                 });
             }
             else if (clickedResult != result.previousCorrectAnswerIndex && clickedResult != null) {
@@ -140,14 +138,9 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $(".againButton").addClass("closeButtonDiv");
                     $(".nextButton").addClass("closeButtonDiv");
 
-
-
                     $(".scoreDiv").text("Du hade " + result.correctAnswers + " rätt av " + result.questionTotal);
                     $(".closeA").text("Stäng");
-                    $(".closeA").css("display", "block");
-
                     $(".sameLevel").text("Spela igen");
-                    $(".sameLevel").css("display", "block");
 
                     $('.sameLevel').click(function () {
                         window.location.href = "/" + gameType + "/" + level;
