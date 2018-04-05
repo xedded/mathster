@@ -98,7 +98,6 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.stopSound();
                 });
             }
-            result.questionTotal = 1;
             if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
@@ -124,7 +123,9 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
 
                 sleep(1000).then(() => {
 
+
                     $("#containerDiv").css("display", "none");
+
                     $(".resultDiv").css("display", "block");
 
 
@@ -183,7 +184,6 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     }
                 });
 
-                $("#resultDiv").css("display", "block");
 
                 sleep(1000).then(() => {
 
