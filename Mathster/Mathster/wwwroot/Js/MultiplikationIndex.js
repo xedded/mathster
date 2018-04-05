@@ -105,7 +105,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                 });
             }
 
-            if (result.questionIndex <= result.questionTotal) { // Kom ihåg att ändra till <= !!!
+            if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
                     $("#questionIndex").text(result.questionIndex + "/" + result.questionTotal);
