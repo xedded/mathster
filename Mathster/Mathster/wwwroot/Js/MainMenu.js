@@ -6,6 +6,7 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     $(".video").text("VIDEO");
+    $('.info').text("RÄKNEHJÄLP");
     $('.slash').text("/").css("font-size", "10em");
 
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -78,4 +79,27 @@
             $('#minusList').css('display', 'none')
         }
     );
+    $('#instructionVideo').hover(function () {
+        $('.fa-play').css('display', 'none')
+        $('#videoList').css('display', 'block')
+    },
+        function () {
+            $('.fa-play').css('display', 'block')
+            $('#videoList').css('display', 'none')
+        }
+    );
+    $('#settings').hover(function () {
+        $('.fa-cog').css('display', 'none')
+        $('#questions').css('display', 'block')
+    },
+        function () {
+            $('.fa-cog').css('display', 'block')
+            $('#questions').css('display', 'none')
+        }
+    );
+
+
+
+
+
 };
