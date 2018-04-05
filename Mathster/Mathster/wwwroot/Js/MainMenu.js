@@ -6,6 +6,7 @@
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
     $(".video").text("VIDEO");
+    $('.info').text("RÄKNEHJÄLP");
     $('.slash').text("/").css("font-size", "10em");
 
   
@@ -58,6 +59,7 @@
             $('#videoList').css('display', 'none')
         }
     );
+   
     $('#settings').hover(function () {
         $('.fa-cog').css('display', 'none')
         $('#questions').css('display', 'block')
