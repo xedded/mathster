@@ -10,6 +10,7 @@
     font-size: 180px;
     text-align: center;
     text-shadow: 2px 2px 10px #000000;
+    height:25%; 
 }
 
 
@@ -39,8 +40,9 @@ height:720px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items:center;
     flex-wrap: wrap;
-    height: 100%;
+    height: 38%;
 }
 
 .menuChoice {
@@ -48,7 +50,7 @@ height:720px;
     justify-content: center;
     align-items: center;
     background-color: #47826d;
-    height: 40%;
+    height: 80%;
     width: 15%;
     border: solid;
     border-color: white;
@@ -77,7 +79,7 @@ ul {
     list-style: none;
     font-family: 'Trebuchet MS';
     color: white;
-    font-size: 1em;
+    font-size: 0.8em;
     padding-left: 0;
 }
 #videoList {
@@ -85,11 +87,11 @@ ul {
 }
 
 li {
-    padding: 10px;
+    padding: 2px;
 }
 .squirrel img{
     height: 200px;
-    padding-top:55px;
+    /*padding-top:35px;*/
 
 }
 .mathster img {
@@ -103,7 +105,12 @@ li {
     border:none;
     background:none;
     box-shadow:none;
-    padding-right:70px;
+}
+.squirrelDiv{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
 }
 #questions {
     font-size: 2em;
@@ -117,7 +124,149 @@ li {
     min-width: 100%;
     min-height: 100%;
 }
-@media only screen and (max-device-width : 800px) {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    body{
+        background-size:140%;
+    }
+    .menuChoice{
+        height:70%;
+        width:18%;
+    }
+    .squirrelDiv img {
+        margin-left:600px;
+        margin-bottom:40px;
+        height:200px;
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+    body {
+        background-size: 140%;
+    }
+
+    .menuChoice {
+        height: 70%;
+        width: 18%;
+    }
+
+    .squirrelDiv img {
+        margin-left: 600px;
+        margin-bottom: 40px;
+        height: 200px;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation : landscape) {
+    body {
+        background-size: 120%;
+    }
+    .container {
+        height: 370px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    /*.container{
+        display:flex;
+        flex-direction:column;
+        align-content:space-between;
+        justify-content:space-between;
+    }*/
+    .mathster img {
+        height: 100px;
+    }
+    .mathster{
+        margin-top:-70px;
+        height:10%;
+    }
+
+    .menuChoice {
+        height: 75%;
+        width: 17%;
+        font-size:0.6em;
+        border-radius:25px;
+        border-width:5px;
+    }
+
+    .squirrelDiv img {
+
+        height: 120px;
+        padding:0;
+        margin-bottom:-10px;
+    }
+    .row{
+        height:40%;
+        margin-top:150px;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation : portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    body {
+        background-size: 120%;
+    }
+
+    .container {
+        height: 370px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    /*.container{
+        display:flex;
+        flex-direction:column;
+        align-content:space-between;
+        justify-content:space-between;
+    }*/
+    .mathster img {
+        height: 100px;
+    }
+
+    .mathster {
+        margin-top: -70px;
+        height: 10%;
+    }
+
+    .menuChoice {
+        height: 75%;
+        width: 17%;
+        font-size: 0.6em;
+        border-radius: 25px;
+        border-width: 5px;
+    }
+
+    .squirrelDiv img {
+        height: 120px;
+        padding: 0;
+        margin-bottom: -10px;
+    }
+
+    .row {
+        height: 40%;
+        margin-top: 150px;
+    }
+}
+
+/*@media only screen and (max-device-width : 800px) {
     body {
         background-size: 330%;
     }
@@ -212,4 +361,4 @@ li {
     }
 
 
-}
+}*/

@@ -14,7 +14,7 @@ namespace Mathster.Models
             switch (gameType)
             {
                 case GameType.Multiplication:
-                    model.MultiplicationVideo = "https://www.youtube.com/embed/xCW3xBNBigg?rel=0&autoplay=1";
+                    model.MultiplicationVideo = "https://www.youtube.com/embed/YXFWS4cmcsA?rel=0&autoplay=1";
                     return model;
                  
                 case GameType.Division:

@@ -5,13 +5,11 @@
     $('.easyA').text("LÄTT");
     $('.mediumA').text("MEDEL");
     $('.hardA').text("SVÅR");
-    //$('.mathster').text("MATHSTER");
+    $(".video").text("VIDEO");
     $('.slash').text("/").css("font-size", "10em");
 
-    $(".multiplication").text("Multiplikation");
-    $(".division").text("Division");
-    $(".addition").text("Addition");
-    $(".subtraction").text("Subtraktion");
+  
+        
 
 
 

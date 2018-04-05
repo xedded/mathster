@@ -27,11 +27,12 @@
     padding: 18px;
     text-shadow: 2px 2px 10px #000000;
 }
+
 #feedback {
     text-shadow: 2px 2px 10px #000000;
-    display:flex;
-    align-content:center;
-    justify-content:center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .backDiv {
@@ -100,6 +101,10 @@
         background-color: #60b394;
     }
 
+.sound {
+    text-shadow: 2px 2px 10px #000000;
+}
+
 /*.answer1 {
     background-color: #47826d;
 }
@@ -121,8 +126,60 @@
 }
 
 
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    body {
+        background-size: 140%;
+    }
+    .sound{
+        margin-top:120px;
+        margin-left:20px;
+    }
+    .answers div {
+        width: 12%;
+    }
 
-@media only screen and (max-device-width : 800px) {
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+    body {
+        background-size: 140%;
+    }
+
+    .sound {
+        margin-top: 120px;
+        margin-left: 20px;
+    }
+
+    .answers div {
+        width: 12%;
+    }
+
+}
+/*@media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation : landscape) {
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation : portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+}*/
+
+    /*@media only screen and (max-device-width : 800px) {
     body {
         background-size:330%;
     }
@@ -212,4 +269,4 @@
             border-radius: 0;
             margin-top:2%;
         }
-}
+}*/
