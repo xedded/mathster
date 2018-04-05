@@ -56,7 +56,7 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                 $(".answer").eq(clickedResult).css("background-color", "green");
                 if (clickSound) {
 
-                $.playSound('https://www.soundjay.com/button/sounds/button-1.mp3')
+                    $.playSound('http://blog.angelsevov.se/wp-content/uploads/2018/04/Correct_Answer_Button_Sound_Effect.mp3')
                 }
 
                 var myArray = ["Bra jobbat!", "Snyggt!", "Naaajs!", "Fantastico!", "Mycket bra!", " ", " ", " "];
