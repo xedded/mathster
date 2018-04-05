@@ -98,7 +98,6 @@ function getQuestion(level, gameType, clickedResult, clickSound) {
                     $.stopSound();
                 });
             }
-            result.questionIndex = 11;
             if (result.questionIndex <= result.questionTotal) {
 
                 sleep(1000).then(() => {
